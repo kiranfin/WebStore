@@ -7,6 +7,10 @@
     font-family: "Jost", sans-serif;
 }
 
+.cardheader{
+    font-size: 35px;
+}
+
 :root{
     --bg-color: #1D242B;
     --bg-color2: #4c5053;
@@ -19,7 +23,7 @@
 .container{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     /*height: 100vh;*/
 }
 
@@ -60,5 +64,5 @@
 
 .swiper {
     width: 1200px;
-    height: 500px;
+    height: 530px;
 }
