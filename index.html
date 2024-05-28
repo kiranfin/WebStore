@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>WebStore</title>
+	<title>WebStore | Home</title>
 
 	<!--- boxicon link --->
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
@@ -22,172 +22,184 @@
 
 </head>
 <body>
-	<!----------- Navigation Bar --------->
-	<nav class="navbar"></nav>
-	<script src="js/nav.js"></script>
+	<header>
+		<!----------- Navigation Bar --------->
+		<nav class="navbar"></nav>
+		<script src="js/nav.js"></script>
+	</header>
 
-	<!----------- Vorschläge --------->
-	<section class="container">
-		<div class="cardcontainer swiper">
-			<div class="cardcontent">
-				<h1 class="cardheader">Deine Vorschläge</h1>
-				<div class="swiper-wrapper">
-					<div class="product swiper-slide">
-						<div class="box">
-							<div class="img">
-								<img src="img/logo.png" alt="img">
+	<main>
+		<!----------- Vorschläge --------->
+		<section class="container">
+			<div class="cardcontainer swiper">
+				<div class="cardcontent">
+					<h1 class="cardheader">Deine Vorschläge</h1>
+					<div class="swiper-wrapper">
+						<div class="product swiper-slide">
+							<div class="box">
+								<div class="img">
+									<img src="img/logo.png" alt="img">
+								</div>
+								<div class="info">
+									<h2>Huhu</h2>
+									<div class="btn">
+										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
+									</div>
+								</div>
 							</div>
-							<div class="info">
-								<h2>Huhu</h2>
-								<div class="btn">
-									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
+						</div>
+						<div class="product swiper-slide">
+							<div class="box">
+								<div class="img">
+									<img src="img/logo.png" alt="img">
+								</div>
+								<div class="info">
+									<h2>lol</h2>
+									<div class="btn">
+										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="product swiper-slide">
+							<div class="box">
+								<div class="img">
+									<img src="img/logo.png" alt="img">
+								</div>
+								<div class="info">
+									<h2>lol2</h2>
+									<div class="btn">
+										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="product swiper-slide">
+							<div class="box">
+								<div class="img">
+									<img src="img/logo.png" alt="img">
+								</div>
+								<div class="info">
+									<h2>lol3</h2>
+									<div class="btn">
+										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="product swiper-slide">
-						<div class="box">
-							<div class="img">
-								<img src="img/logo.png" alt="img">
-							</div>
-							<div class="info">
-								<h2>lol</h2>
-								<div class="btn">
-									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="product swiper-slide">
-						<div class="box">
-							<div class="img">
-								<img src="img/logo.png" alt="img">
-							</div>
-							<div class="info">
-								<h2>lol2</h2>
-								<div class="btn">
-									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="product swiper-slide">
-						<div class="box">
-							<div class="img">
-								<img src="img/logo.png" alt="img">
-							</div>
-							<div class="info">
-								<h2>lol3</h2>
-								<div class="btn">
-									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-								</div>
-							</div>
-						</div>
-					</div>
+
+					<div class="swiper-button-next"></div>
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-pagination"></div>
 				</div>
+			</div>
+		</section>
+		<script src="js/swiper-bundle.min.js"></script>
+		<script src="js/main.js"></script>
 
-				<div class="swiper-button-next"></div>
-				<div class="swiper-button-prev"></div>
-				<div class="swiper-pagination"></div>
+		<!----------- Discounts --------->
+		<div class="small-container">
+			<div class="viewmorerow">
+				<h1 class="discountheader">Discounts</h1>
+				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+			</div>
+			<div class="row">
+				<div class="discounts">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="discounts">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="discounts">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="discounts">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
 			</div>
 		</div>
-	</section>
-	<script src="js/swiper-bundle.min.js"></script>
-	<script src="js/main.js"></script>
 
-	<!----------- Discounts --------->
-	<div class="small-container">
-		<div class="viewmorerow">
-			<h1 class="discountheader">Discounts</h1>
-			<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+		<!----------- Neues --------->
+		<div class="small-container">
+			<div class="viewmorerow">
+				<h1 class="newheader">Neues</h1>
+				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+			</div>
+			<div class="row">
+				<div class="new">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="new">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="new">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+				<div class="new">
+					<img src="img/hamsti.jpg">
+					<h4>Product Name</h4>
+					<p>50€</p>
+				</div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="discounts">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="discounts">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="discounts">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="discounts">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-		</div>
-	</div>
 
-	<!----------- Neues --------->
-	<div class="small-container">
-		<div class="viewmorerow">
-			<h1 class="newheader">Neues</h1>
-			<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+		<!----------- Beliebte Kategorien --------->
+		<div class="small-container">
+			<div class="viewmorerow">
+				<h1 class="categoryheader">Beliebte Kategorien</h1>
+				<a href="categories.html"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+			</div>
+			<div class="categoryrow">
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-hotel-bed-line" style="color:burlywood"></i> Möbel</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-leaf-line" style="color:limegreen"></i> Garten</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-footprint-line" style="color:saddlebrown"></i> Schuhe</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-glasses-line" style="color:skyblue"></i> Accessoires</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-t-shirt-2-line" style="color:white;"></i> Klamotten</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-car-fill" style="color:red"></i> Autos</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-home-heart-line" style="color:orange"></i> Dekoration</button></a>
+				</div>
+				<div class="categorywrap">
+					<a href="#"><button class="categorybutton"><i class="ri-smartphone-line" style="color:lightblue"></i> Technik</button></a>
+				</div>
+			</div>
 		</div>
-		<div class="row">
-			<div class="new">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="new">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="new">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-			<div class="new">
-				<img src="img/hamsti.jpg">
-				<h4>Product Name</h4>
-				<p>50€</p>
-			</div>
-		</div>
-	</div>
 
-	<!----------- Beliebte Kategorien --------->
-	<div class="small-container">
-		<div class="viewmorerow">
-			<h1 class="categoryheader">Beliebte Kategorien</h1>
-			<a href="categories.html"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
-		</div>
-		<div class="categoryrow">
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategorie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Katie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategowekhfbwjerie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategeeerie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategewforie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategoewfwejefrie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kategorie1</button></a>
-			</div>
-			<div class="categorywrap">
-				<a href="#"><button class="categorybutton">Kae1</button></a>
-			</div>
-		</div>
-	</div>
+		<div class="push"></div>
+	</main>
+
+	<footer>
+		<!-----------Footer--------->
+		<nav class="footer"></nav>
+		<script src="js/footer.js"></script>
+	</footer>
 
 </body>
 </html>

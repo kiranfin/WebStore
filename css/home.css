@@ -7,6 +7,11 @@
     font-family: "Jost", sans-serif;
 }
 
+main{
+    min-height: 100vh;
+    margin-bottom: -240px;
+}
+
 .cardheader{
     font-size: 35px;
 }
@@ -18,6 +23,7 @@
     --text-color-invert: #1D242B;
     --hover-color: #0077C0;
     --p-font: 25px;
+    --border-color: #d5d9d9;
 }
 
 /*Deine Vorschläge*/
@@ -85,7 +91,7 @@
 .cardbutton:hover{
     color: var(--text-color-invert);
     background-color: #ffffff;
-    border: 1px solid #d5d9d9;
+    border: 1px solid var(--border-color);
 }
 
 /*Basics*/
@@ -124,7 +130,7 @@
 .viewmorebutton:hover{
     color: var(--text-color-invert);
     background-color: #ffffff;
-    border: 1px solid #d5d9d9;
+    border: 1px solid var(--border-color);
 }
 
 /*Discounts*/
@@ -212,7 +218,7 @@
 .categorybutton:hover{
     color: var(--text-color-invert);
     background-color: #ffffff;
-    border: 1px solid #d5d9d9;
+    border: 1px solid var(--border-color);
 }
 
 .categorysite{
@@ -221,4 +227,89 @@
     padding-left: 25px;
     padding-right: 25px;
     padding-top: 50px;
+}
+
+footer, .push{
+    height: 240px;
+}
+
+/*Footer*/
+.footer{
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-size: 18px;
+    padding: 60px 0 60px;
+    height: 240px;
+}
+
+.footerheader{
+    font-size: 24px;
+}
+
+
+/*Products*/
+.productssite{
+    max-width: 1080px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 50px;
+}
+
+.sorter{
+    margin: 10px;
+}
+
+.products {
+    flex-basis: 25%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.25s;
+}
+
+.productsheader{
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    line-height: 60px;
+    font-size: 35px;
+}
+
+.products img{
+    max-width: 100%;
+}
+
+.products:hover{
+    transform: translateY(-5px);
+}
+
+.page-buttons{
+    margin: 0 auto 80px;
+
+}
+
+.page-buttons span{
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    color: var(--text-color-invert);
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.page-buttons span:hover{
+    display: inline-block;
+    background-color: var(--bg-color2);
+    color: var(--text-color);
+    border: 1px solid transparent;
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
 }
