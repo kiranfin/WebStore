@@ -56,21 +56,6 @@
 	margin: 0 25px;
 }
 
-.categorydropdown li {
-	display: block;
-}
-
-.categorydropdown {
-	width: 10%;
-	background: var(--bg-color2);
-	position: fixed;
-	display: none;
-}
-
-.categories li:hover ul.categorydropdown{
-	display: block;
-}
-
 .categories a:hover{
 	color: var(--hover-color);
 }

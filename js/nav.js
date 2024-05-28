@@ -4,18 +4,10 @@ const createNav = () => {
 	nav.innerHTML = `
 		<div class="nav">
 			<img src="img/logo.png" class="brand-logo" alt="">
-			<a href="#" class="logo">Web Store</a>
+			<a href="index.html" class="logo">Web Store</a>
 			<ul class="categories">
 				<li><a href="index.html">Home</a></li>
-				<li>
-					<a href="#">Kategorien</a>
-					<ul class="categorydropdown">
-						<li><a href="#">Klamotten</a></li>
-						<li><a href="#">Schuhe</a></li>
-						<li><a href="#">Möbel</a></li>
-						<li><a href="#">Accessoires</a></li>
-					</ul>
-				</li>
+				<li><a href="categories.html">Kategorien</a></li>
 				<li><a href="#">Credits</a></li>
 			</ul>
 			<div class="nav-items">

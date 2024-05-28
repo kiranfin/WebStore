@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -17,17 +16,18 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+	<!----------- Style sheets --------->
 	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="css/home.css">
 
 </head>
 <body>
+	<!----------- Navigation Bar --------->
 	<nav class="navbar"></nav>
 	<script src="js/nav.js"></script>
 
-	
+	<!----------- Vorschläge --------->
 	<section class="container">
-
 		<div class="cardcontainer swiper">
 			<div class="cardcontent">
 				<h1 class="cardheader">Deine Vorschläge</h1>
@@ -40,7 +40,7 @@
 							<div class="info">
 								<h2>Huhu</h2>
 								<div class="btn">
-									<button>Mehr Infos</button>
+									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
 								</div>
 							</div>
 						</div>
@@ -53,7 +53,7 @@
 							<div class="info">
 								<h2>lol</h2>
 								<div class="btn">
-									<button>Mehr Infos</button>
+									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
 								</div>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 							<div class="info">
 								<h2>lol2</h2>
 								<div class="btn">
-									<button>Mehr Infos</button>
+									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
 								</div>
 							</div>
 						</div>
@@ -79,7 +79,7 @@
 							<div class="info">
 								<h2>lol3</h2>
 								<div class="btn">
-									<button>Mehr Infos</button>
+									<a href="#"><button class="cardbutton">Mehr Infos</button></a>
 								</div>
 							</div>
 						</div>
@@ -92,9 +92,102 @@
 			</div>
 		</div>
 	</section>
-
 	<script src="js/swiper-bundle.min.js"></script>
 	<script src="js/main.js"></script>
+
+	<!----------- Discounts --------->
+	<div class="small-container">
+		<div class="viewmorerow">
+			<h1 class="discountheader">Discounts</h1>
+			<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+		</div>
+		<div class="row">
+			<div class="discounts">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="discounts">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="discounts">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="discounts">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+		</div>
+	</div>
+
+	<!----------- Neues --------->
+	<div class="small-container">
+		<div class="viewmorerow">
+			<h1 class="newheader">Neues</h1>
+			<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+		</div>
+		<div class="row">
+			<div class="new">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="new">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="new">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+			<div class="new">
+				<img src="img/hamsti.jpg">
+				<h4>Product Name</h4>
+				<p>50€</p>
+			</div>
+		</div>
+	</div>
+
+	<!----------- Beliebte Kategorien --------->
+	<div class="small-container">
+		<div class="viewmorerow">
+			<h1 class="categoryheader">Beliebte Kategorien</h1>
+			<a href="categories.html"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+		</div>
+		<div class="categoryrow">
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategorie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Katie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategowekhfbwjerie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategeeerie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategewforie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategoewfwejefrie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kategorie1</button></a>
+			</div>
+			<div class="categorywrap">
+				<a href="#"><button class="categorybutton">Kae1</button></a>
+			</div>
+		</div>
+	</div>
 
 </body>
 </html>
