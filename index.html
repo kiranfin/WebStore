@@ -20,6 +20,8 @@
 	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="css/home.css">
 
+	<script src="js/manager.js"></script>
+
 </head>
 <body>
 	<header>
@@ -34,60 +36,8 @@
 			<div class="cardcontainer swiper">
 				<div class="cardcontent">
 					<h1 class="cardheader">Deine Vorschläge</h1>
-					<div class="swiper-wrapper">
-						<div class="product swiper-slide">
-							<div class="box">
-								<div class="img">
-									<img src="img/logo.png" alt="img">
-								</div>
-								<div class="info">
-									<h2>Huhu</h2>
-									<div class="btn">
-										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="product swiper-slide">
-							<div class="box">
-								<div class="img">
-									<img src="img/logo.png" alt="img">
-								</div>
-								<div class="info">
-									<h2>lol</h2>
-									<div class="btn">
-										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="product swiper-slide">
-							<div class="box">
-								<div class="img">
-									<img src="img/logo.png" alt="img">
-								</div>
-								<div class="info">
-									<h2>lol2</h2>
-									<div class="btn">
-										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="product swiper-slide">
-							<div class="box">
-								<div class="img">
-									<img src="img/logo.png" alt="img">
-								</div>
-								<div class="info">
-									<h2>lol3</h2>
-									<div class="btn">
-										<a href="#"><button class="cardbutton">Mehr Infos</button></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
+					<div class="swiper-wrapper"></div>
+					<script language="javascript">getSuggestions(4)</script>
 
 					<div class="swiper-button-next"></div>
 					<div class="swiper-button-prev"></div>
@@ -104,28 +54,8 @@
 				<h1 class="discountheader">Discounts</h1>
 				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
 			</div>
-			<div class="row">
-				<div class="discounts">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="discounts">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="discounts">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="discounts">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-			</div>
+			<div class="discountrow"></div>
+			<script language="javascript">getProducts("discountrow", "sale", 4, "discounts")</script>
 		</div>
 
 		<!----------- Neues --------->
@@ -134,28 +64,8 @@
 				<h1 class="newheader">Neues</h1>
 				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
 			</div>
-			<div class="row">
-				<div class="new">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="new">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="new">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-				<div class="new">
-					<img src="img/hamsti.jpg">
-					<h4>Product Name</h4>
-					<p>50€</p>
-				</div>
-			</div>
+			<div class="newrow"></div>
+			<script language="javascript">getProducts("newrow", "dateadded", 4, "new")</script>
 		</div>
 
 		<!----------- Beliebte Kategorien --------->
@@ -164,35 +74,11 @@
 				<h1 class="categoryheader">Beliebte Kategorien</h1>
 				<a href="categories.html"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
 			</div>
-			<div class="categoryrow">
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-hotel-bed-line" style="color:burlywood"></i> Möbel</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-leaf-line" style="color:limegreen"></i> Garten</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-footprint-line" style="color:saddlebrown"></i> Schuhe</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-glasses-line" style="color:skyblue"></i> Accessoires</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-t-shirt-2-line" style="color:white;"></i> Klamotten</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-car-fill" style="color:red"></i> Autos</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-home-heart-line" style="color:orange"></i> Dekoration</button></a>
-				</div>
-				<div class="categorywrap">
-					<a href="#"><button class="categorybutton"><i class="ri-smartphone-line" style="color:lightblue"></i> Technik</button></a>
-				</div>
-			</div>
+			<div class="categoryrow"></div>
+			<script language="javascript">getCategories("categoryrow")</script>
 		</div>
 
-		<div class="push"></div>
+		<div class="push"></div>	
 	</main>
 
 	<footer>
