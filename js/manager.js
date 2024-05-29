@@ -1,5 +1,5 @@
 let currentPage = 1;
-let maxElements = 4;
+let maxElements = 6;
 
 let maxVisiblePages = 5;
 
@@ -301,17 +301,13 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let i = 0;
             let sortarray = products.toSorted((a, b) => a.price - b.price);
-            if(i < count) {
-                sortarray.forEach((product) => {
-                    arraytodo.push(`<div class="${surroundingelement}">
-                        <img src="${product["img"]}">
-                        <h4>${product["title"]}</h4>
-                        ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
-                        </div>`);
-                    i++;
-                });
+            for(let i = 0; i < count; i++) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${sortarray[i]["img"]}">
+                    <h4>${sortarray[i]["title"]}</h4>
+                    ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
+                    </div>`);
             }
         }
     } else if(sorter === "sale") {
@@ -325,16 +321,13 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let i = 0;
             let sortarray = products.toSorted((a, b) => a.sale - b.sale);
-            if(i < count) {
-                sortarray.forEach((product) => {
-                    arraytodo.push(`<div class="${surroundingelement}">
-                        <img src="${product["img"]}">
-                        <h4>${product["title"]}</h4>
-                        ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
-                        </div>`);
-                });
+            for(let i = 0; i < count; i++) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${sortarray[i]["img"]}">
+                    <h4>${sortarray[i]["title"]}</h4>
+                    ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
+                    </div>`);
             }
         }
     } else if(sorter === "dateadded") {
@@ -348,16 +341,13 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let i = 0;
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
-            if(i < count) {
-                sortarray.forEach((product) => {
-                    arraytodo.push(`<div class="${surroundingelement}">
-                        <img src="${product["img"]}">
-                        <h4>${product["title"]}</h4>
-                        ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
-                        </div>`);
-                });
+            for(let i = 0; i < count; i++) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${sortarray[i]["img"]}">
+                    <h4>${sortarray[i]["title"]}</h4>
+                    ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
+                    </div>`);
             }
         }
     } else if(sorter === "default" || sorter === null) {
@@ -371,16 +361,13 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let i = 0;
             let sortarray = products;
-            if(i < count) {
-                sortarray.forEach((product) => {
-                    arraytodo.push(`<div class="${surroundingelement}">
-                        <img src="${product["img"]}">
-                        <h4>${product["title"]}</h4>
-                        ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
-                        </div>`);
-                });
+            for(let i = 0; i < count; i++) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${sortarray[i]["img"]}">
+                    <h4>${sortarray[i]["title"]}</h4>
+                    ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
+                    </div>`);
             }
         }
     }
@@ -575,7 +562,6 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
     prev = (page - 1) * maxElements; //0
     all = page * maxElements; //20
     prcount = prarray.length; //4
-    console.log(prarray);
     let arraytodo = [];
     if(prcount < all) {
         if(page - 1 <= 0) {
@@ -586,6 +572,8 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
             }
+            let final = arraytodo.join("\n");
+            document.querySelector("." + element).innerHTML = final;
         } else {
             for(let i = (prev - 1); i < (prcount - 1); i++) {
                 arraytodo.push(`<div class="${surroundingelement}">
@@ -594,6 +582,8 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
             }
+            let final = arraytodo.join("\n");
+            document.querySelector("." + element).innerHTML = final;
         }
     } else {
         if(page - 1 <= 0) {
@@ -604,6 +594,8 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
             }
+            let final = arraytodo.join("\n");
+            document.querySelector("." + element).innerHTML = final;
         } else {
             for(let i = (prev - 1); i < (all - 1); i++) {
                 arraytodo.push(`<div class="${surroundingelement}">
@@ -612,30 +604,25 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
             }
+            let final = arraytodo.join("\n");
+            document.querySelector("." + element).innerHTML = final;
         }
     }
-    let final = arraytodo.join("\n");
-    return final;
 }
 
 function getPageButtons(element) {
     arraytodo = [];
-    curr = getCurrentPage();
     pagecount = Math.ceil(products.length / maxElements);
-
-    if(curr !== 1) {
-        arraytodo.push(`<button onclick="setCurrentPage(getCurrentPage() - 1)"><i class="ri-arrow-left-s-line"></i></button>`);
-    }
+    
+    arraytodo.push(`<button onclick='decreaseCurrentPage("page-button")' class="prev-page-btn"><i class="ri-arrow-left-s-line"></i></button>\n<ul class="number-buttons">`);
     for(let i = 1; i <= pagecount; i++) {
-        if(i !== curr) {
-            arraytodo.push(`<button onclick="setCurrentPage(${i})">${i}</button>`);
+        if(i !== currentPage) {
+            arraytodo.push(`<li onclick='updateCurrentPage("page-button")' value="${i}" class="page-button">${i}</li>`);
         } else {
-            arraytodo.push(`<button class="clickedpage">${i}</button>`);
+            arraytodo.push(`<li onclick='updateCurrentPage("page-button")' value="${i}" class="page-button active">${i}</li>`);
         }
     }
-    if(curr !== pagecount) {
-        arraytodo.push(`<button onclick="setCurrentPage(getCurrentPage() + 1)"><i class="ri-arrow-right-s-line"></i></button>`);
-    }
+    arraytodo.push(`</ul>\n<button onclick='increaseCurrentPage("page-button")' class="next-page-btn"><i class="ri-arrow-right-s-line"></i></button>`);
 
     let final = arraytodo.join("\n");
     document.querySelector("." + element).innerHTML = final;
@@ -648,54 +635,35 @@ function updateCurrentPage(element) {
     }
     event.target.classList.add("active");
     setCurrentPage(event.target.value);
+    getProductsFromPage("productrow", "price", -1, "products", currentPage);
+    document.documentElement.scrollTop = 0;
 }
 
 function decreaseCurrentPage(element) {
-    if(currentPage > getVisiblePages()[0]) { 
+    if(currentPage > 1) {
         let buttons = document.getElementsByClassName(element);
-        buttons[currentPage - 1].classList.remove("active");
+        for(button of buttons) {
+            button.classList.remove("active");
+        }
         setCurrentPage(currentPage - 1);
         buttons[currentPage - 1].classList.add("active");
+        getProductsFromPage("productrow", "price", -1, "products", currentPage);
+        document.documentElement.scrollTop = 0;
     }
 }
 
 function increaseCurrentPage(element) {
-    if(currentPage < getVisiblePages()[getVisiblePages().length - 1]) {
+    console.log(currentPage);
+    total = Math.ceil(products.length / maxElements);
+    console.log(total);
+    if(currentPage < total) {
         let buttons = document.getElementsByClassName(element);
-        buttons[currentPage - 1].classList.remove("active");
+        for(button of buttons) {
+            button.classList.remove("active");
+        }
         setCurrentPage(currentPage + 1);
         buttons[currentPage - 1].classList.add("active");
+        getProductsFromPage("productrow", "price", -1, "products", currentPage);
+        document.documentElement.scrollTop = 0;
     }
-}
-
-/*function initCurrentPage() {
-    local = sessionStorage.getItem("currentPage");
-    console.log(local);
-    console.log(currentPage);
-    if(local !== null) {
-        setCurrentPage(local);
-    } else {
-        setCurrentPage(1);
-    }
-}
-
-initCurrentPage();*/
-
-function getVisiblePages() {
-    total = Math.ceil(products.length / maxElements);
-    max = maxVisiblePages;
-    current = currentPage;
-
-    const half = Math.round(max / 2);
-    let to = max;
-
-    if(current + half >= total) {
-        to = total;
-    } else if(current > half) {
-        to = current + half;
-    }
-
-    let from = to - max;
-
-    return Array.from({length: max}, (_, i) => (i + 1) + from);
 }
