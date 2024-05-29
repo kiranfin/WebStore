@@ -46,15 +46,23 @@
 				</div>
 				<div class="productrow">	
 				</div>
-				<script language="javascript">getProducts("productrow", "price", -1, "products")</script>
+				<script language="javascript">getProductsFromPage("productrow", "price", -1, "products", getCurrentPage())</script>
 
 				<div class="page-buttons">
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span><i class="ri-arrow-right-s-line"></i></span>
+					<button class="start-page-btn">start</button>
+					<button onclick="decreaseCurrentPage(`page-button`)" class="prev-page-btn">prev</button>
+					<ul class="number-buttons">
+						<li onclick="updateCurrentPage(`page-button`)" value="1" class="page-button active">1</li>
+						<li onclick="updateCurrentPage(`page-button`)" value="2" class="page-button">2</li>
+						<li onclick="updateCurrentPage(`page-button`)" value="3" class="page-button">3</li>
+						<li onclick="updateCurrentPage(`page-button`)" value="4" class="page-button">4</li>
+						<li onclick="updateCurrentPage(`page-button`)" value="5" class="page-button">5</li>
+					</ul>
+					<button onclick="increaseCurrentPage(`page-button`)" class="next-page-btn">next</button>
+					<button class="end-page-btn">end</button>
+
 				</div>
+				<!--<script language="javascript">getPageButtons("page-buttons")</script>-->
 			</div>
 		</section>
 

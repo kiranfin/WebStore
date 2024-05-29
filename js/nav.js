@@ -8,6 +8,7 @@ const createNav = () => {
 			<ul class="categories">
 				<li><a href="index.html">Home</a></li>
 				<li><a href="categories.html">Kategorien</a></li>
+				<li><a href="products.html">Produkte</a></li>
 			</ul>
 			<div class="nav-items">
 				<div class="search">
