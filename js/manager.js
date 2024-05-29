@@ -66,7 +66,7 @@ const products = [
         id: 1,
         title: "Pflanze",
         price: 39.99,
-        sale: 10,
+        sale: 0,
         img: "./img/pflanze.jpg",
         description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
         tags: ["garden"],
@@ -77,7 +77,7 @@ const products = [
         id: 2,
         title: "Smartphone S24 Ultra",
         price: 437.46,
-        sale: 50,
+        sale: 0,
         img: "./img/s24.jpg",
         description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
         tags: ["technology", "accessoires"],
@@ -259,7 +259,7 @@ function getSuggestions(count) {
                     <div class="info">
                         <h2>${product["title"]}</h2>
                         <div class="cardrow">
-                            <p class="cardprice">` + getPriceAndSale(product["id"]) + `</p>
+                            ` + getPriceAndSaleSuggestions(product["id"]) + `
                             <div class="btn">
                                 <a href="#"><button class="cardbutton">Mehr Infos</button></a>
                             </div>
@@ -279,7 +279,7 @@ function getSuggestions(count) {
                     <div class="info">
                         <h2>${product["title"]}</h2>
                         <div class="cardrow">
-                            <p class="cardprice">` + getPriceAndSale(product["id"]) + `</p>
+                            ` + getPriceAndSaleSuggestions(product["id"]) + `
                             <div class="btn">
                                 <a href="#"><button class="cardbutton">Mehr Infos</button></a>
                             </div>
@@ -302,6 +302,21 @@ function getPriceAndSale(id) {
         saleprice = salepricestraight.toFixed(2);
         if(sale !== 0) {
             return `<p style="text-decoration:line-through">${price}€</p><p style="color:red"> ${saleprice}€ (${sale}%)</p>`;
+        } else {
+            return `<p>${price}€</p>`;
+        }
+    }
+}
+
+function getPriceAndSaleSuggestions(id) {
+    todoproduct = getProductFromId(id);
+    if(todoproduct !== null) {
+        price = todoproduct.price;
+        sale = todoproduct.sale
+        salepricestraight = price - ((sale * 0.01) * price);
+        saleprice = salepricestraight.toFixed(2);
+        if(sale !== 0) {
+            return `<div class="cardsale"><p style="text-decoration:line-through">${price}€</p><p style="color:red"> ${saleprice}€ (${sale}%)</p></div>`;
         } else {
             return `<p>${price}€</p>`;
         }

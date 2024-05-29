@@ -111,6 +111,10 @@ main{
     font-size: 22px;
 }
 
+.cardsale{
+    text-align: left;
+}
+
 .cardrow{
     padding-left: 15px;
     padding-right: 15px;
