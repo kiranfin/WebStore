@@ -322,8 +322,23 @@ footer, .push{
     margin-right: 5px;
 }
 
-.sorter{
+.sorter, .maxview{
     margin: 10px;
+    color: var(--text-color);
+    background: var(--bg-color2);
+    font-size: 16px;
+    border-radius: 0.5em;
+    cursor: pointer;
+    border: 2px var(--bg-color2) solid;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.sorter:hover, .maxview:hover{
+    color: var(--text-color);
+    background: var(--bg-color2);
 }
 
 .products {

@@ -1,7 +1,8 @@
 let currentPage = 1;
-let maxElements = 6;
-
+let maxElements = 20;
 let maxVisiblePages = 5;
+
+let currentSorter = "default";
 
 const categories = [
     {
@@ -312,7 +313,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         }
     } else if(sorter === "sale") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => a.sale - b.sale);
+            let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}">
                     <img src="${product["img"]}">
@@ -321,7 +322,7 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let sortarray = products.toSorted((a, b) => a.sale - b.sale);
+            let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}">
                     <img src="${sortarray[i]["img"]}">
@@ -395,11 +396,11 @@ function getProductsArray(sorter, count) {
         }
     } else if(sorter === "sale") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => a.sale - b.sale);
+            let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             arraytodo = sortarray;
         } else if(count !== -1 && count !== 0) {
             let i = 0;
-            let sortarray = products.toSorted((a, b) => a.sale - b.sale);
+            let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             if(i < count) {
                 sortarray.forEach((product) => {
                     arraytodo.push(product);
@@ -635,7 +636,8 @@ function updateCurrentPage(element) {
     }
     event.target.classList.add("active");
     setCurrentPage(event.target.value);
-    getProductsFromPage("productrow", "price", -1, "products", currentPage);
+    getProductsFromPage("productrow", getCurrentSorter(), -1, "products", currentPage);
+    getPageButtons("page-buttons");
     document.documentElement.scrollTop = 0;
 }
 
@@ -647,15 +649,14 @@ function decreaseCurrentPage(element) {
         }
         setCurrentPage(currentPage - 1);
         buttons[currentPage - 1].classList.add("active");
-        getProductsFromPage("productrow", "price", -1, "products", currentPage);
+        getProductsFromPage("productrow", getCurrentSorter(), -1, "products", currentPage);
+        getPageButtons("page-buttons");
         document.documentElement.scrollTop = 0;
     }
 }
 
 function increaseCurrentPage(element) {
-    console.log(currentPage);
     total = Math.ceil(products.length / maxElements);
-    console.log(total);
     if(currentPage < total) {
         let buttons = document.getElementsByClassName(element);
         for(button of buttons) {
@@ -663,7 +664,46 @@ function increaseCurrentPage(element) {
         }
         setCurrentPage(currentPage + 1);
         buttons[currentPage - 1].classList.add("active");
-        getProductsFromPage("productrow", "price", -1, "products", currentPage);
+        getProductsFromPage("productrow", getCurrentSorter(), -1, "products", currentPage);
+        getPageButtons("page-buttons");
         document.documentElement.scrollTop = 0;
     }
+}
+
+function getCurrentSorter() {
+    return currentSorter;
+}
+
+function setCurrentSorter(sorter) {
+    currentSorter = sorter;
+}
+
+function updateCurrentSorter(element) {
+    let options = document.getElementsByClassName(element);
+    for(option of options) {
+        option.classList.remove("active");
+    }
+    event.target.classList.add("active");
+    setCurrentSorter(event.target.value);
+    getProductsFromPage("productrow", getCurrentSorter(), -1, "products", currentPage);
+    getPageButtons("page-buttons");
+}
+
+function getMaxElements() {
+    return maxElements;
+}
+
+function setMaxElements(count) {
+    maxElements = count;
+}
+
+function updateMaxElements(element) {
+    let options = document.getElementsByClassName(element);
+    for(option of options) {
+        option.classList.remove("active");
+    }
+    event.target.classList.add("active");
+    setMaxElements(event.target.value);
+    getProductsFromPage("productrow", getCurrentSorter(), -1, "products", currentPage);
+    getPageButtons("page-buttons");
 }
