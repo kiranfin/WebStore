@@ -1,6 +1,7 @@
 let currentPage = 1;
 let maxElements = 20;
 let maxVisiblePages = 5;
+let maxSale = 80;
 
 let currentSorter = '';
 
@@ -34,7 +35,7 @@ const categories = [
     {
         identifier: "clothes",
         icon: "ri-t-shirt-2-line",
-        color: "white",
+        color: "cyan",
         title: "Klamotten"
     },
     {
@@ -63,7 +64,7 @@ function getCategories(element) {
     let arraytodo = [];
     categories.forEach((category) => {
         arraytodo.push(`<div class="categorywrap">
-            <a href="#"><button class="categorybutton"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</button></a>
+            <a href="category.html?category=${category["identifier"]}"><button class="categorybutton"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</button></a>
         </div>`);
     });
 
@@ -278,8 +279,9 @@ function getSuggestions(count) {
             </div>`);
         });
     } else {
-        for(let i = 0; i < count; i++) {
-            product = products[Math.floor(Math.random()*products.length)];
+        newproducts = products;
+        for(let i = 0; i < count; i++) {    
+            product = newproducts[Math.floor(Math.random()*newproducts.length)];
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
@@ -296,6 +298,7 @@ function getSuggestions(count) {
                     </div>
                 </div>
             </div>`);
+            newproducts.splice(newproducts.indexOf(product), 1);
         }
     }
     let final = arraytodo.join("\n");
@@ -615,4 +618,57 @@ function saveProductsToLocal(productarray) {
 
 function clearLocal() {
     localStorage.clear();
+}
+
+function getProductsFromCategory(element, surroundingelement) {
+    let arraytodo = [];
+
+    url = window.location.search;
+    const urlparams = new URLSearchParams(url);
+    if(urlparams.has('category')) {
+        categoryname = urlparams.get('category');
+        category = getCategoryByIdentifier(categoryname);
+        arraytodo.push(`<h1 class="categoryheader"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</h1>\n<div class="productrow">`);
+        products.forEach((product) => {
+            if(product.tags.includes(category["identifier"])) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${product["img"]}">
+                    <h4>${product["title"]}</h4>
+                    ` + getPriceAndSale(product["id"]) + `
+                    <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
+            }
+        });
+        arraytodo.push(`</div`);
+    }
+
+    let final = arraytodo.join("\n");
+    document.querySelector("." + element).innerHTML = final;
+}
+
+function getCategoryByIdentifier(identifier) {
+    var item = categories.find(item => item.identifier === identifier);
+    return item;
+}
+
+console.log(products);
+
+function randomSale() {
+    newproducts = products;
+    newproducts.forEach((product) => {
+        product["sale"] = 0;
+    });
+    saveProductsToLocal(newproducts);
+
+    arraytodo = [];
+    newproducts = products;
+    randomcount = Math.floor(Math.random()*newproducts.length);
+    for(let i = 0; i < randomcount; i++) {
+        pr = newproducts[Math.floor(Math.random()*newproducts.length)];
+        pr["sale"] = Math.floor(Math.random() * maxSale);
+        arraytodo.push(pr);
+        newproducts.splice(newproducts.indexOf(pr), 1);
+    }
+    let merge = newproducts.concat(arraytodo);
+    let final = merge.toSorted((a, b) => a.id - b.id);
+    saveProductsToLocal(final);
 }
