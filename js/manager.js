@@ -55,228 +55,9 @@ const categories = [
         color: "lightblue",
         title: "Technik"
     }
-]; //also change later
+];
 
-const products = [
-    {
-        id: 0,
-        title: "Bett",
-        price: 120,
-        sale: 30,
-        img: "./img/bett.jpg",
-        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
-        tags: ["furniture"],
-        user: "kiranfin",
-        dateadded: "2024-03-15T15:34:17.000+02:00"
-    },
-    {
-        id: 1,
-        title: "Pflanze",
-        price: 39.99,
-        sale: 0,
-        img: "./img/pflanze.jpg",
-        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
-        tags: ["garden"],
-        user: "Gerd",
-        dateadded: "2024-04-15T15:34:17.000+02:00"
-    },
-    {
-        id: 2,
-        title: "Smartphone S24 Ultra",
-        price: 437.46,
-        sale: 0,
-        img: "./img/s24.jpg",
-        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
-        tags: ["technology", "accessoires"],
-        user: "kiranfin",
-        dateadded: "2024-02-15T15:34:17.000+02:00"
-    },
-    {
-        id: 3,
-        title: "Fiat 500",
-        price: 6936.99,
-        sale: 69,
-        img: "./img/fiat.jpg",
-        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
-        tags: ["cars"],
-        user: "kiranfin",
-        dateadded: "2024-01-15T15:34:17.000+02:00"
-    },
-    {
-        id: 4,
-        title: "Bett",
-        price: 120,
-        sale: 30,
-        img: "./img/bett.jpg",
-        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
-        tags: ["furniture"],
-        user: "kiranfin",
-        dateadded: "2024-03-15T15:34:17.000+02:00"
-    },
-    {
-        id: 5,
-        title: "Pflanze",
-        price: 39.99,
-        sale: 0,
-        img: "./img/pflanze.jpg",
-        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
-        tags: ["garden"],
-        user: "Gerd",
-        dateadded: "2024-04-15T15:34:17.000+02:00"
-    },
-    {
-        id: 6,
-        title: "Smartphone S24 Ultra",
-        price: 437.46,
-        sale: 0,
-        img: "./img/s24.jpg",
-        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
-        tags: ["technology", "accessoires"],
-        user: "kiranfin",
-        dateadded: "2024-02-15T15:34:17.000+02:00"
-    },
-    {
-        id: 7,
-        title: "Fiat 500",
-        price: 6936.99,
-        sale: 69,
-        img: "./img/fiat.jpg",
-        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
-        tags: ["cars"],
-        user: "kiranfin",
-        dateadded: "2024-01-15T15:34:17.000+02:00"
-    },
-    {
-        id: 8,
-        title: "Bett",
-        price: 120,
-        sale: 30,
-        img: "./img/bett.jpg",
-        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
-        tags: ["furniture"],
-        user: "kiranfin",
-        dateadded: "2024-03-15T15:34:17.000+02:00"
-    },
-    {
-        id: 9,
-        title: "Pflanze",
-        price: 39.99,
-        sale: 0,
-        img: "./img/pflanze.jpg",
-        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
-        tags: ["garden"],
-        user: "Gerd",
-        dateadded: "2024-04-15T15:34:17.000+02:00"
-    },
-    {
-        id: 10,
-        title: "Smartphone S24 Ultra",
-        price: 437.46,
-        sale: 0,
-        img: "./img/s24.jpg",
-        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
-        tags: ["technology", "accessoires"],
-        user: "kiranfin",
-        dateadded: "2024-02-15T15:34:17.000+02:00"
-    },
-    {
-        id: 11,
-        title: "Fiat 500",
-        price: 6936.99,
-        sale: 69,
-        img: "./img/fiat.jpg",
-        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
-        tags: ["cars"],
-        user: "kiranfin",
-        dateadded: "2024-01-15T15:34:17.000+02:00"
-    },{
-        id: 12,
-        title: "Bett",
-        price: 120,
-        sale: 30,
-        img: "./img/bett.jpg",
-        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
-        tags: ["furniture"],
-        user: "kiranfin",
-        dateadded: "2024-03-15T15:34:17.000+02:00"
-    },
-    {
-        id: 13,
-        title: "Pflanze",
-        price: 39.99,
-        sale: 0,
-        img: "./img/pflanze.jpg",
-        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
-        tags: ["garden"],
-        user: "Gerd",
-        dateadded: "2024-04-15T15:34:17.000+02:00"
-    },
-    {
-        id: 14,
-        title: "Smartphone S24 Ultra",
-        price: 437.46,
-        sale: 0,
-        img: "./img/s24.jpg",
-        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
-        tags: ["technology", "accessoires"],
-        user: "kiranfin",
-        dateadded: "2024-02-15T15:34:17.000+02:00"
-    },
-    {
-        id: 15,
-        title: "Fiat 500",
-        price: 6936.99,
-        sale: 69,
-        img: "./img/fiat.jpg",
-        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
-        tags: ["cars"],
-        user: "kiranfin",
-        dateadded: "2024-01-15T15:34:17.000+02:00"
-    },{
-        id: 16,
-        title: "Bett",
-        price: 120,
-        sale: 30,
-        img: "./img/bett.jpg",
-        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
-        tags: ["furniture"],
-        user: "kiranfin",
-        dateadded: "2024-03-15T15:34:17.000+02:00"
-    },
-    {
-        id: 17,
-        title: "Pflanze",
-        price: 39.99,
-        sale: 0,
-        img: "./img/pflanze.jpg",
-        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
-        tags: ["garden"],
-        user: "Gerd",
-        dateadded: "2024-04-15T15:34:17.000+02:00"
-    },
-    {
-        id: 18,
-        title: "Smartphone S24 Ultra",
-        price: 437.46,
-        sale: 0,
-        img: "./img/s24.jpg",
-        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
-        tags: ["technology", "accessoires"],
-        user: "kiranfin",
-        dateadded: "2024-02-15T15:34:17.000+02:00"
-    },
-    {
-        id: 19,
-        title: "Fiat 500",
-        price: 6936.99,
-        sale: 69,
-        img: "./img/fiat.jpg",
-        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
-        tags: ["cars"],
-        user: "kiranfin",
-        dateadded: "2024-01-15T15:34:17.000+02:00"
-    }
-]; //change this later
+let products = getProductsFromLocal();
 
 function getCategories(element) {
     let arraytodo = [];
@@ -742,4 +523,97 @@ function getSorterOptions(element) {
 
     let final = arraytodo.join("\n");
     document.querySelector("." + element).innerHTML = final;
+}
+
+function getClaimedIds() {
+    let final = [];
+    products.forEach((product) => {
+        final.push(product.id);
+    });
+    return final;
+}
+
+function getFreeId() {
+    claimedids = getClaimedIds();
+    for(let i = 0; false; i++) {
+        if(!claimedids.includes(i)) break;
+        return i;
+    }
+}
+
+//addProduct("hamsti", 500, "./img/hamsti.jpg", "eins hamsti", ["cars"], "Andi");
+
+function addProduct(title, price, img, description, tags, user) {
+    id = getFreeId();
+    sale = 0;
+    now = new Date();
+    date = toIsoString(now);
+    products.push({id: id, title: title, price: price, sale: sale, img: img, description: description, tags: tags, user: user, dateadded: date});
+    saveProductsToLocal(products);
+}
+
+function removeProduct(product) {
+    index = products.indexOf(product);
+    if(index > -1) {
+        products.splice(index, 1);
+    }
+}
+
+function toIsoString(date) {
+    var tzo = -date.getTimezoneOffset(),
+        dif = tzo >= 0 ? '+' : '-',
+        pad = function(num) {
+            return (num < 10 ? '0' : '') + num;
+        };
+
+    return date.getFullYear() +
+        '-' + pad(date.getMonth() + 1) +
+        '-' + pad(date.getDate()) +
+        'T' + pad(date.getHours()) +
+        ':' + pad(date.getMinutes()) +
+        ':' + pad(date.getSeconds()) +
+        dif + pad(Math.floor(Math.abs(tzo) / 60)) +
+        ':' + pad(Math.abs(tzo) % 60);
+}
+
+function getProductsFromLocal() {
+    local = localStorage.getItem("products");
+    console.log(local);
+    if(local === null) {
+        titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
+            "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
+        prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
+        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
+            "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
+        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
+            "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
+            "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
+            "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Kupfer/Polyester, schwarz, outdoor", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
+            "20 Stunden Wiedergabe mit einer Aufladung, personalisiertes 3D-Audio"];
+        catetags = [["furniture"], ["furniture"], ["furniture"], ["furniture", "garden"], ["garden", "decoration"], ["garden", "furniture"], ["shoes"], ["shoes"], ["accessoires"], ["accessoires"], ["clothes"], ["clothes"], ["clothes"], 
+            ["cars"], ["cars"], ["decoration"], ["decoration"], ["technology"], ["technology", "decoration"], ["technology"]];
+        users = ["Anna", "Ben", "Clara", "Emma", "David", "Felix", "Greta", "Hugo", "Ivonne", "Jonas", "Katharina", "Leon", "Maria", "Noah", "Olivia", "Paul", "Sophie", "Tim", "Ulrike", "Vincent"];
+        dates = ["2021-01-22T17:53:36.000+02:00", "2023-01-01T22:51:35.000+02:00", "2020-06-26T15:54:01.000+02:00", "2020-09-01T22:19:07.000+02:00", "2023-09-28T01:57:58.000+02:00", "2023-03-07T15:27:39.000+02:00", 
+            "2020-04-11T15:19:14.000+02:00", "2023-11-14T01:32:57.000+02:00", "2023-08-03T11:02:30.000+02:00", "2022-07-25T06:56:47.000+02:00", "2021-11-03T09:38:30.000+02:00", "2022-08-22T22:12:41.000+02:00", 
+            "2021-05-10T09:39:11.000+02:00", "2022-12-01T12:10:35.000+02:00", "2021-07-07T10:53:24.000+02:00", "2021-01-31T10:58:51.000+02:00", "2022-10-09T22:51:40.000+02:00", "2023-01-01T01:22:33.000+02:00", 
+            "2020-03-29T16:01:00.000+02:00", "2023-04-22T14:42:11.000+02:00 "];
+
+        let tosave = [];
+        for(let i = 0; i < titles.length; i++) {
+            tosave.push({id: i, title: titles[i], price: prices[i], sale: 0, img: imgs[i], description: descriptions[i], tags: catetags[i], user: users[i], dateadded: dates[i]});
+        }
+        saveProductsToLocal(tosave);
+    }
+    local = localStorage.getItem("products");
+    todo = JSON.parse(local);
+    return todo;
+}
+
+function saveProductsToLocal(productarray) {
+    serialized = JSON.stringify(productarray);
+    localStorage.setItem("products", serialized);
+}
+
+function clearLocal() {
+    localStorage.clear();
 }

@@ -6,8 +6,9 @@ const createFooter = () => {
 			<div class="footer-info">
 				<h4 class="footerheader">Informationen</h4>
 				<p>Webseite erstellt von Finjas</p>
-				<p>Zweck: Informatikprojekt</p>
 				<p>Klasse: G12</p>
+				<p>Zweck: Informatikprojekt</p>
+				<p>Ausgestellte Produkte stehen NICHT zum Verkauf, dienen nur zu Schauzwecken!</p>
 			</div>
 			<div class="footer-socials">
 				<h4 class="footerheader">Soziale Netzwerke</h4>
