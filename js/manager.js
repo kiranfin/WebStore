@@ -220,8 +220,6 @@ function getProductsArray(sorter, count) {
     return arraytodo;
 }
 
-clearLocal();
-
 function getTagsFromProduct(id) {
     todoproduct = getProductFromId(id);
     if(todoproduct !== null) {
@@ -580,6 +578,7 @@ function toIsoString(date) {
 
 function getProductsFromLocal() {
     local = localStorage.getItem("products");
+    clearLocal();
     console.log(local);
     if(local === null) {
         titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
