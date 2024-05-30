@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="css/swiper-bundle.min.css">
 	<link rel="stylesheet" href="css/home.css">
 
-	<script src="js/manager.js"></script>
+	<script type="module" src="js/manager.js"></script>
 
 </head>
 <body>
@@ -52,7 +52,7 @@
 		<div class="small-container">
 			<div class="viewmorerow">
 				<h1 class="discountheader">Discounts</h1>
-				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+				<a href="products.html?sorter=sale"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
 			</div>
 			<div class="discountrow"></div>
 			<script language="javascript">getProducts("discountrow", "sale", 4, "discounts")</script>
@@ -62,7 +62,7 @@
 		<div class="small-container">
 			<div class="viewmorerow">
 				<h1 class="newheader">Neues</h1>
-				<a href="#"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
+				<a href="products.html?sorter=dateadded"><button class="viewmorebutton">Alle anzeigen <i class="ri-arrow-right-double-fill"></i></button></a>
 			</div>
 			<div class="newrow"></div>
 			<script language="javascript">getProducts("newrow", "dateadded", 4, "new")</script>

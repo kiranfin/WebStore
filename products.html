@@ -18,7 +18,7 @@
 
 	<link rel="stylesheet" href="css/home.css">
 
-	<script src="js/manager.js"></script>
+	<script type="module" src="js/manager.js"></script>
 
 </head>
 <body>
@@ -43,12 +43,8 @@
 							<option class="option" value="80">80</option>
 						</select>
 						<p style="font-size: 16px">Sortieren nach:</p>
-						<select onchange="updateCurrentSorter('sorter')" class="sorter">
-							<option class="option active" value="default">Standard</option>
-							<option class="option" value="dateadded">Datum</option>
-							<option class="option" value="price">Preis</option>
-							<option class="option" value="sale">Sale</option>
-						</select>
+						<select onchange="updateCurrentSorter()" class="sorter"></select>
+						<script language="javascript">getSorterOptions("sorter")</script>
 					</div>
 				</div>
 				<div class="productrow">	

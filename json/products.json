@@ -1,0 +1,220 @@
+[
+    {
+        "id": 0,
+        "title": "Bett",
+        "price": 120,
+        "sale": 30,
+        "img": "./img/bett.jpg",
+        "description": "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        "tags": ["furniture"],
+        "user": "kiranfin",
+        "dateadded": "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 1,
+        "title": "Pflanze",
+        "price": 39.99,
+        "sale": 0,
+        "img": "./img/pflanze.jpg",
+        "description": "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        "tags": ["garden"],
+        "user": "Gerd",
+        "dateadded": "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 2,
+        "title": "Smartphone S24 Ultra",
+        "price": 437.46,
+        "sale": 0,
+        "img": "./img/s24.jpg",
+        "description": "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        "tags": ["technology", "accessoires"],
+        "user": "kiranfin",
+        "dateadded": "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 3,
+        "title": "Fiat 500",
+        "price": 6936.99,
+        "sale": 69,
+        "img": "./img/fiat.jpg",
+        "description": "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        "tags": ["cars"],
+        "user": "kiranfin",
+        "dateadded": "2024-01-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 4,
+        "title": "Bett",
+        "price": 120,
+        "sale": 30,
+        "img": "./img/bett.jpg",
+        "description": "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        "tags": ["furniture"],
+        "user": "kiranfin",
+        "dateadded": "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 5,
+        "title": "Pflanze",
+        "price": 39.99,
+        "sale": 0,
+        "img": "./img/pflanze.jpg",
+        "description": "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        "tags": ["garden"],
+        "user": "Gerd",
+        "dateadded": "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 6,
+        "title": "Smartphone S24 Ultra",
+        "price": 437.46,
+        "sale": 0,
+        "img": "./img/s24.jpg",
+        "description": "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        "tags": ["technology", "accessoires"],
+        "user": "kiranfin",
+        "dateadded": "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 7,
+        "title": "Fiat 500",
+        "price": 6936.99,
+        "sale": 69,
+        "img": "./img/fiat.jpg",
+        "description": "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        "tags": ["cars"],
+        "user": "kiranfin",
+        "dateadded": "2024-01-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 8,
+        "title": "Bett",
+        "price": 120,
+        "sale": 30,
+        "img": "./img/bett.jpg",
+        "description": "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        "tags": ["furniture"],
+        "user": "kiranfin",
+        "dateadded": "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 9,
+        "title": "Pflanze",
+        "price": 39.99,
+        "sale": 0,
+        "img": "./img/pflanze.jpg",
+        "description": "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        "tags": ["garden"],
+        "user": "Gerd",
+        "dateadded": "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 10,
+        "title": "Smartphone S24 Ultra",
+        "price": 437.46,
+        "sale": 0,
+        "img": "./img/s24.jpg",
+        "description": "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        "tags": ["technology", "accessoires"],
+        "user": "kiranfin",
+        "dateadded": "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 11,
+        "title": "Fiat 500",
+        "price": 6936.99,
+        "sale": 69,
+        "img": "./img/fiat.jpg",
+        "description": "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        "tags": ["cars"],
+        "user": "kiranfin",
+        "dateadded": "2024-01-15T15:34:17.000+02:00"
+    },{
+        "id": 12,
+        "title": "Bett",
+        "price": 120,
+        "sale": 30,
+        "img": "./img/bett.jpg",
+        "description": "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        "tags": ["furniture"],
+        "user": "kiranfin",
+        "dateadded": "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 13,
+        "title": "Pflanze",
+        "price": 39.99,
+        "sale": 0,
+        "img": "./img/pflanze.jpg",
+        "description": "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        "tags": ["garden"],
+        "user": "Gerd",
+        "dateadded": "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 14,
+        "title": "Smartphone S24 Ultra",
+        "price": 437.46,
+        "sale": 0,
+        "img": "./img/s24.jpg",
+        "description": "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        "tags": ["technology", "accessoires"],
+        "user": "kiranfin",
+        "dateadded": "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 15,
+        "title": "Fiat 500",
+        "price": 6936.99,
+        "sale": 69,
+        "img": "./img/fiat.jpg",
+        "description": "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        "tags": ["cars"],
+        "user": "kiranfin",
+        "dateadded": "2024-01-15T15:34:17.000+02:00"
+    },{
+        "id": 16,
+        "title": "Bett",
+        "price": 120,
+        "sale": 30,
+        "img": "./img/bett.jpg",
+        "description": "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        "tags": ["furniture"],
+        "user": "kiranfin",
+        "dateadded": "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 17,
+        "title": "Pflanze",
+        "price": 39.99,
+        "sale": 0,
+        "img": "./img/pflanze.jpg",
+        "description": "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        "tags": ["garden"],
+        "user": "Gerd",
+        "dateadded": "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 18,
+        "title": "Smartphone S24 Ultra",
+        "price": 437.46,
+        "sale": 0,
+        "img": "./img/s24.jpg",
+        "description": "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        "tags": ["technology", "accessoires"],
+        "user": "kiranfin",
+        "dateadded": "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        "id": 19,
+        "title": "Fiat 500",
+        "price": 6936.99,
+        "sale": 69,
+        "img": "./img/fiat.jpg",
+        "description": "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        "tags": ["cars"],
+        "user": "kiranfin",
+        "dateadded": "2024-01-15T15:34:17.000+02:00"
+    }
+]
