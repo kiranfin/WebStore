@@ -578,8 +578,6 @@ function toIsoString(date) {
 
 function getProductsFromLocal() {
     local = localStorage.getItem("products");
-    clearLocal();
-    console.log(local);
     if(local === null) {
         titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
             "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
