@@ -220,6 +220,8 @@ function getProductsArray(sorter, count) {
     return arraytodo;
 }
 
+clearLocal();
+
 function getTagsFromProduct(id) {
     todoproduct = getProductFromId(id);
     if(todoproduct !== null) {
