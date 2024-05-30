@@ -1,13 +1,282 @@
-import products from "./json/products.json" assert {type: 'json'};
-import categories from "./json/categories.json" assert {type: 'json'};
-
 let currentPage = 1;
 let maxElements = 20;
 let maxVisiblePages = 5;
 
 let currentSorter = '';
 
-const availablesorts = ["default", "dateadded", "price", "sale"]; 
+const availablesorts = ["default", "dateadded", "price", "sale"];
+
+const categories = [
+    {
+        identifier: "furniture",
+        icon: "ri-hotel-bed-line",
+        color: "burlywood",
+        title: "Möbel"
+    },
+    {
+        identifier: "garden",
+        icon: "ri-leaf-line",
+        color: "limegreen",
+        title: "Garten"
+    },
+    {
+        identifier: "shoes",
+        icon: "ri-footprint-line",
+        color: "saddlebrown",
+        title: "Schuhe"
+    },
+    {
+        identifier: "accessoires",
+        icon: "ri-glasses-line",
+        color: "skyblue",
+        title: "Accessoires"
+    },
+    {
+        identifier: "clothes",
+        icon: "ri-t-shirt-2-line",
+        color: "white",
+        title: "Klamotten"
+    },
+    {
+        identifier: "cars",
+        icon: "ri-car-fill",
+        color: "red",
+        title: "Autos"
+    },
+    {
+        identifier: "decoration",
+        icon: "ri-home-heart-line",
+        color: "orange",
+        title: "Dekoration"
+    },
+    {
+        identifier: "technology",
+        icon: "ri-smartphone-line",
+        color: "lightblue",
+        title: "Technik"
+    }
+]; //also change later
+
+const products = [
+    {
+        id: 0,
+        title: "Bett",
+        price: 120,
+        sale: 30,
+        img: "./img/bett.jpg",
+        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        tags: ["furniture"],
+        user: "kiranfin",
+        dateadded: "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        id: 1,
+        title: "Pflanze",
+        price: 39.99,
+        sale: 0,
+        img: "./img/pflanze.jpg",
+        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        tags: ["garden"],
+        user: "Gerd",
+        dateadded: "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        id: 2,
+        title: "Smartphone S24 Ultra",
+        price: 437.46,
+        sale: 0,
+        img: "./img/s24.jpg",
+        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        tags: ["technology", "accessoires"],
+        user: "kiranfin",
+        dateadded: "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        id: 3,
+        title: "Fiat 500",
+        price: 6936.99,
+        sale: 69,
+        img: "./img/fiat.jpg",
+        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        tags: ["cars"],
+        user: "kiranfin",
+        dateadded: "2024-01-15T15:34:17.000+02:00"
+    },
+    {
+        id: 4,
+        title: "Bett",
+        price: 120,
+        sale: 30,
+        img: "./img/bett.jpg",
+        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        tags: ["furniture"],
+        user: "kiranfin",
+        dateadded: "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        id: 5,
+        title: "Pflanze",
+        price: 39.99,
+        sale: 0,
+        img: "./img/pflanze.jpg",
+        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        tags: ["garden"],
+        user: "Gerd",
+        dateadded: "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        id: 6,
+        title: "Smartphone S24 Ultra",
+        price: 437.46,
+        sale: 0,
+        img: "./img/s24.jpg",
+        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        tags: ["technology", "accessoires"],
+        user: "kiranfin",
+        dateadded: "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        id: 7,
+        title: "Fiat 500",
+        price: 6936.99,
+        sale: 69,
+        img: "./img/fiat.jpg",
+        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        tags: ["cars"],
+        user: "kiranfin",
+        dateadded: "2024-01-15T15:34:17.000+02:00"
+    },
+    {
+        id: 8,
+        title: "Bett",
+        price: 120,
+        sale: 30,
+        img: "./img/bett.jpg",
+        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        tags: ["furniture"],
+        user: "kiranfin",
+        dateadded: "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        id: 9,
+        title: "Pflanze",
+        price: 39.99,
+        sale: 0,
+        img: "./img/pflanze.jpg",
+        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        tags: ["garden"],
+        user: "Gerd",
+        dateadded: "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        id: 10,
+        title: "Smartphone S24 Ultra",
+        price: 437.46,
+        sale: 0,
+        img: "./img/s24.jpg",
+        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        tags: ["technology", "accessoires"],
+        user: "kiranfin",
+        dateadded: "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        id: 11,
+        title: "Fiat 500",
+        price: 6936.99,
+        sale: 69,
+        img: "./img/fiat.jpg",
+        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        tags: ["cars"],
+        user: "kiranfin",
+        dateadded: "2024-01-15T15:34:17.000+02:00"
+    },{
+        id: 12,
+        title: "Bett",
+        price: 120,
+        sale: 30,
+        img: "./img/bett.jpg",
+        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        tags: ["furniture"],
+        user: "kiranfin",
+        dateadded: "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        id: 13,
+        title: "Pflanze",
+        price: 39.99,
+        sale: 0,
+        img: "./img/pflanze.jpg",
+        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        tags: ["garden"],
+        user: "Gerd",
+        dateadded: "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        id: 14,
+        title: "Smartphone S24 Ultra",
+        price: 437.46,
+        sale: 0,
+        img: "./img/s24.jpg",
+        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        tags: ["technology", "accessoires"],
+        user: "kiranfin",
+        dateadded: "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        id: 15,
+        title: "Fiat 500",
+        price: 6936.99,
+        sale: 69,
+        img: "./img/fiat.jpg",
+        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        tags: ["cars"],
+        user: "kiranfin",
+        dateadded: "2024-01-15T15:34:17.000+02:00"
+    },{
+        id: 16,
+        title: "Bett",
+        price: 120,
+        sale: 30,
+        img: "./img/bett.jpg",
+        description: "Das hier ist ein toller Hamster ähh Bett, den ich nicht verkaufe",
+        tags: ["furniture"],
+        user: "kiranfin",
+        dateadded: "2024-03-15T15:34:17.000+02:00"
+    },
+    {
+        id: 17,
+        title: "Pflanze",
+        price: 39.99,
+        sale: 0,
+        img: "./img/pflanze.jpg",
+        description: "Das hier ist ein toller Pflanze ähh, den ich nicht verkaufe",
+        tags: ["garden"],
+        user: "Gerd",
+        dateadded: "2024-04-15T15:34:17.000+02:00"
+    },
+    {
+        id: 18,
+        title: "Smartphone S24 Ultra",
+        price: 437.46,
+        sale: 0,
+        img: "./img/s24.jpg",
+        description: "Das hier ist ein tolls gakaxy, den ich nicht verkaufe",
+        tags: ["technology", "accessoires"],
+        user: "kiranfin",
+        dateadded: "2024-02-15T15:34:17.000+02:00"
+    },
+    {
+        id: 19,
+        title: "Fiat 500",
+        price: 6936.99,
+        sale: 69,
+        img: "./img/fiat.jpg",
+        description: "Das hier ist ein tolls fiaaaat, den ich nicht verkaufe",
+        tags: ["cars"],
+        user: "kiranfin",
+        dateadded: "2024-01-15T15:34:17.000+02:00"
+    }
+]; //change this later
 
 function getCategories(element) {
     let arraytodo = [];
@@ -446,8 +715,6 @@ function initCurrentSorter() {
     } else if(currentSorter === ''){
         currentSorter = "default";
     }
-    console.log(currentSorter);
-    console.log(document.getElementsByClassName('sorter'));
 }
 
 initCurrentSorter();
