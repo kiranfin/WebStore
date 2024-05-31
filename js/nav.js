@@ -11,9 +11,12 @@ const createNav = () => {
 				<li><a href="products.html">Produkte</a></li>
 			</ul>
 			<div class="nav-items">
-				<div class="search">
-					<input type="text" class="search-box" placeholder="Produkt oder Kategorie suchen">
-					<button class="search-button"><i class="ri-search-line"></i></button>
+				<div class="search-box-block">
+					<div class="search">
+						<input type="text" class="search-box" placeholder="Produkt oder Kategorie suchen" autocomplete="off"></input>
+						<button class="search-button"><i class="ri-search-line"></i></button>
+					</div>
+					<div class="result-box"></div>
 				</div>
 				<div class="nav-right">
 					<a href="upload.html"><i class="ri-upload-line"></i></a>

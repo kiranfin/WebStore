@@ -26,6 +26,7 @@
 	width: 100%;
 	background: var(--bg-color);
 	z-index: 9;
+	max-height: 80px;
 }
 
 .nav{
@@ -62,7 +63,8 @@
 
 .nav-items{
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
+	padding: 10px;
 }
 
 .nav-right{
@@ -83,6 +85,25 @@
 .search{
 	width: 500px;
 	display: flex;
+}
+
+.result-box{
+	border: 1px solid #000000;
+	width: 80%;
+	border-radius: 0.5rem;
+}
+
+.result-box li{
+	list-style-type: none;
+	border-radius: 3px;
+	padding: 5px;
+	color: var(--text-color-invert);
+	cursor: pointer;
+	background: #ffffff;
+}
+
+.result-box li:hover{
+	background: var(--hover-color);
 }
 
 .search-box{

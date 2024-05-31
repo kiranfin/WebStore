@@ -59,6 +59,7 @@ const categories = [
 ];
 
 let products = getProductsFromLocal();
+let availablesearches = getAvailableSearches();
 
 function getCategories(element) {
     let arraytodo = [];
@@ -77,7 +78,7 @@ function getProducts(element, sorter, count, surroundingelement) {
 
     if(sorter === "price") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => a.price - b.price);
+            let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}">
                     <img src="${product["img"]}">
@@ -86,7 +87,7 @@ function getProducts(element, sorter, count, surroundingelement) {
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let sortarray = products.toSorted((a, b) => a.price - b.price);
+            let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}">
                     <img src="${sortarray[i]["img"]}">
@@ -166,11 +167,11 @@ function getProductsArray(sorter, count) {
 
     if(sorter === "price") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => a.price - b.price);
+            let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             arraytodo = sortarray;
         } else if(count !== -1 && count !== 0) {
             let i = 0;
-            let sortarray = products.toSorted((a, b) => a.price - b.price);
+            let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             if(i < count) {
                 sortarray.forEach((product) => {
                     arraytodo.push(product);
@@ -650,14 +651,8 @@ function getCategoryByIdentifier(identifier) {
     return item;
 }
 
-console.log(products);
-
 function randomSale() {
-    newproducts = products;
-    newproducts.forEach((product) => {
-        product["sale"] = 0;
-    });
-    saveProductsToLocal(newproducts);
+    resetSale();
 
     arraytodo = [];
     newproducts = products;
@@ -671,4 +666,127 @@ function randomSale() {
     let merge = newproducts.concat(arraytodo);
     let final = merge.toSorted((a, b) => a.id - b.id);
     saveProductsToLocal(final);
+}
+
+function resetSale() {
+    newproducts = products;
+    newproducts.forEach((product) => {
+        product["sale"] = 0;
+    });
+    saveProductsToLocal(newproducts);
+}
+
+function getAvailableSearches() {
+    let final = [];
+
+    products.forEach((product) => {
+        final.push(product["title"]);
+    });
+
+    categories.forEach((category) => {
+        final.push(category["title"]);
+    });
+    return final;
+}
+
+searchbox = document.querySelector('.search-box');
+resultbox = document.querySelector(".result-box");
+resultbox.style.display = 'none';
+
+window.onclick = (event) => {
+    if (!event.target.matches(".result-box") && !event.target.matches(".resultli")) {
+        resultbox.style.display = 'none';
+    }
+    if(event.target.matches(".search-box") && event.target.value.length > 0){
+        resultbox.style.display = 'block';
+    }
+}
+
+searchbox.onkeyup = function() {    
+    let result = [];
+    let input = searchbox.value;
+    result = getResultsFor(input);
+    if(result.length !== 0) {
+        displayResultInBox(result);
+    }
+}
+
+function displayResultInBox(result) {
+    const content = result.map((list) => {
+        return `<a href='search.html?search=${list}'><li class='resultli'>${list}</li></a>`;
+    });
+
+    resultbox.innerHTML = "<ul>" + content.join('') + "</ul>";
+}
+
+searchbox.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        doSearch();
+    }
+});
+
+function doSearch() {
+    searchbox = document.querySelector('.search-box');
+    val = searchbox.value;
+    window.location.href="search.html?search=" + val;
+}
+
+function getResultsFor(search) {
+    result = [];
+    if(search.length > 0) {
+        resultbox.style.display = 'block';
+        result = availablesearches.filter((keyword) => {
+            return keyword.toLowerCase().includes(search.toLowerCase());
+        });
+    }
+    return result;
+}
+
+function getProductsFromSearch(element, surroundingelement) {
+    let arraytodo = [];
+
+    url = window.location.search;
+    const urlparams = new URLSearchParams(url);
+    if(urlparams.has('search')) {
+        search = urlparams.get('search');
+
+        results = getResultsFor(search);
+        results.forEach((result) => {
+            category = getCategoryByTitle(result);
+            if(category !== undefined) {
+                //category html section
+            }
+
+            product = getProductByTitle(result);
+            if(product !== undefined) {
+                //product html section
+            }
+        });
+
+        /*category = getCategoryByIdentifier(categoryname);
+        arraytodo.push(`<h1 class="categoryheader"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</h1>\n<div class="productrow">`);
+        products.forEach((product) => {
+            if(product.tags.includes(category["identifier"])) {
+                arraytodo.push(`<div class="${surroundingelement}">
+                    <img src="${product["img"]}">
+                    <h4>${product["title"]}</h4>
+                    ` + getPriceAndSale(product["id"]) + `
+                    <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
+            }
+        });
+        arraytodo.push(`</div`);*/
+    }
+
+    let final = arraytodo.join("\n");
+    document.querySelector("." + element).innerHTML = final;
+}
+
+function getCategoryByTitle(title) {
+    var item = categories.find(item => item.title === title);
+    return item;
+}
+
+function getProductByTitle(title) {
+    var item = products.find(item => item.title === title);
+    return item;
 }
