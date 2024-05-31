@@ -14,7 +14,7 @@ const createNav = () => {
 				<div class="search-box-block">
 					<div class="search">
 						<input type="text" class="search-box" placeholder="Produkt oder Kategorie suchen" autocomplete="off"></input>
-						<button class="search-button"><i class="ri-search-line"></i></button>
+						<button class="search-button" onclick="doSearch()"><i class="ri-search-line"></i></button>
 					</div>
 					<div class="result-box"></div>
 				</div>

@@ -80,7 +80,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             sortarray.forEach((product) => {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                     <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
@@ -89,7 +89,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         } else if(count !== -1 && count !== 0) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             for(let i = 0; i < count; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
                     <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
@@ -100,7 +100,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             sortarray.forEach((product) => {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                     <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
@@ -109,7 +109,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         } else if(count !== -1 && count !== 0) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             for(let i = 0; i < count; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
                     <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
@@ -120,7 +120,7 @@ function getProducts(element, sorter, count, surroundingelement) {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
             sortarray.forEach((product) => {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                     <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
@@ -129,27 +129,28 @@ function getProducts(element, sorter, count, surroundingelement) {
         } else if(count !== -1 && count !== 0) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
             for(let i = 0; i < count; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
                     <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
             }
+            console.log(arraytodo);
         }
     } else if(sorter === "default" || sorter === null) {
         if(count === -1) {
-            let sortarray = products;
+            let sortarray = products.map((x) => x);
             sortarray.forEach((product) => {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                     <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let sortarray = products;
+            let sortarray = products.map((x) => x);
             for(let i = 0; i < count; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
                     <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
@@ -168,7 +169,7 @@ function getProductsArray(sorter, count) {
     if(sorter === "price") {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
-            arraytodo = sortarray;
+            arraytodo = sortarray.map((x) => x);
         } else if(count !== -1 && count !== 0) {
             let i = 0;
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
@@ -182,7 +183,7 @@ function getProductsArray(sorter, count) {
     } else if(sorter === "sale") {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
-            arraytodo = sortarray;
+            arraytodo = sortarray.map((x) => x);
         } else if(count !== -1 && count !== 0) {
             let i = 0;
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
@@ -195,7 +196,7 @@ function getProductsArray(sorter, count) {
     } else if(sorter === "dateadded") {
         if(count === -1) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
-            arraytodo = sortarray;
+            arraytodo = sortarray.map((x) => x);
         } else if(count !== -1 && count !== 0) {
             let i = 0;
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
@@ -207,11 +208,11 @@ function getProductsArray(sorter, count) {
         }
     } else if(sorter === "default" || sorter === null) {
         if(count === -1) {
-            let sortarray = products;
-            arraytodo = sortarray;
+            let sortarray = products.map((x) => x);
+            arraytodo = sortarray.map((x) => x);
         } else if(count !== -1 && count !== 0) {
             let i = 0;
-            let sortarray = products;
+            let sortarray = products.map((x) => x);
             if(i < count) {
                 sortarray.forEach((product) => {
                     arraytodo.push(product);
@@ -272,7 +273,7 @@ function getSuggestions(count) {
                         <div class="cardrow">
                             ` + getPriceAndSaleSuggestions(product["id"]) + `
                             <div class="btn">
-                                <a href="#"><button class="cardbutton">Mehr Infos</button></a>
+                                <a href="#"><button class="cardbutton" onclick="onProductClick(${product["id"]})">Mehr Infos</button></a>
                             </div>
                         </div>
                     </div>
@@ -280,7 +281,7 @@ function getSuggestions(count) {
             </div>`);
         });
     } else {
-        newproducts = products;
+        newproducts = products.map((x) => x);
         for(let i = 0; i < count; i++) {    
             product = newproducts[Math.floor(Math.random()*newproducts.length)];
             arraytodo.push(`<div class="product swiper-slide">
@@ -293,13 +294,13 @@ function getSuggestions(count) {
                         <div class="cardrow">
                             ` + getPriceAndSaleSuggestions(product["id"]) + `
                             <div class="btn">
-                                <a href="#"><button class="cardbutton">Mehr Infos</button></a>
+                                <a href="#"><button class="cardbutton" onclick="onProductClick(${product["id"]})">Mehr Infos</button></a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>`);
-            newproducts.splice(newproducts.indexOf(product), 1);
+            newproducts.splice(products.indexOf(product), 1);
         }
     }
     let final = arraytodo.join("\n");
@@ -354,7 +355,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
     if(prcount < all) {
         if(page - 1 <= 0) {
             for(let i = 0; i < prcount; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
@@ -364,7 +365,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
             document.querySelector("." + element).innerHTML = final;
         } else {
             for(let i = (prev - 1); i < (prcount - 1); i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
@@ -376,7 +377,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
     } else {
         if(page - 1 <= 0) {
             for(let i = 0; i < all; i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
@@ -386,7 +387,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
             document.querySelector("." + element).innerHTML = final;
         } else {
             for(let i = (prev - 1); i < (all - 1); i++) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
@@ -632,7 +633,7 @@ function getProductsFromCategory(element, surroundingelement) {
         arraytodo.push(`<h1 class="categoryheader"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</h1>\n<div class="productrow">`);
         products.forEach((product) => {
             if(product.tags.includes(category["identifier"])) {
-                arraytodo.push(`<div class="${surroundingelement}">
+                arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                     <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `
@@ -655,7 +656,7 @@ function randomSale() {
     resetSale();
 
     arraytodo = [];
-    newproducts = products;
+    newproducts = products.map((x) => x);
     randomcount = Math.floor(Math.random()*newproducts.length);
     for(let i = 0; i < randomcount; i++) {
         pr = newproducts[Math.floor(Math.random()*newproducts.length)];
@@ -767,7 +768,7 @@ function getProductsFromSearch(search, element, surroundingelement) {
     results.forEach((result) => {
         product = getProductByTitle(result);
         if(product !== undefined) {
-            arraytodo.push(`<div class="${surroundingelement}">
+            arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
                 <img src="${product["img"]}">
                 <h4>${product["title"]}</h4>
                 ` + getPriceAndSale(product["id"]) + `
@@ -811,4 +812,52 @@ function getCategoryByTitle(title) {
 function getProductByTitle(title) {
     var item = products.find(item => item.title === title);
     return item;
+}
+
+function onProductClick(id) {
+    window.location.href="product.html?id=" + id;
+}
+
+function getProductSite(element) {
+    url = window.location.search;
+    const urlparams = new URLSearchParams(url);
+    if(urlparams.has('id')) {
+        id = urlparams.get('id');
+        console.log(id);
+        console.log(localStorage.getItem("products"));
+        product = getProductFromId(parseInt(id, 10));
+
+        if(product !== null && product !== undefined) {
+            date = new Date(product["dateadded"]);
+            console.log(date);
+            viewdate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
+            final = `
+            <div class="prrow">
+                <div class="imgs">
+                    <img src=${product["img"]}></img>    
+                </div>
+                <div class="prinfos">
+                    <h1 class="prheader">${product["title"]}</h1>
+                    <div class="prprice">` + getPriceAndSale(parseInt(id, 10)) + `</div>
+                    <p class="prdescription">${product["description"]}</p>
+                </div>
+            </div>
+            <div class="productrowbutton">
+                <div>
+                    <p class="pruser">${product["user"]}</p>
+                    <p class="prdate">${viewdate}</p>
+                </div>
+                <a href="products.html?sorter=sale"><button class="viewmorebutton">Zum Warenkorb hinzufügen <i class="ri-arrow-right-double-fill"></i></button></a>
+            </div>
+            `;
+
+            document.querySelector("." + element).innerHTML = final;
+        } else {
+            error = `<h1 class="searchheader">Error: Kein Produkt mit der Id</h1>`;
+            document.querySelector("." + element).innerHTML = error;
+        }
+    } else {
+        error = `<h1 class="searchheader">Error: Kein Produkt mit der Id</h1>`;
+        document.querySelector("." + element).innerHTML = error;
+    }
 }
