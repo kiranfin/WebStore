@@ -742,43 +742,65 @@ function getResultsFor(search) {
     return result;
 }
 
-function getProductsFromSearch(element, surroundingelement) {
-    let arraytodo = [];
-
+function getSearchResults(productelement, productsurroundingelement, categoryelement) {
     url = window.location.search;
     const urlparams = new URLSearchParams(url);
     if(urlparams.has('search')) {
         search = urlparams.get('search');
 
         results = getResultsFor(search);
-        results.forEach((result) => {
-            category = getCategoryByTitle(result);
-            if(category !== undefined) {
-                //category html section
-            }
-
-            product = getProductByTitle(result);
-            if(product !== undefined) {
-                //product html section
-            }
-        });
-
-        /*category = getCategoryByIdentifier(categoryname);
-        arraytodo.push(`<h1 class="categoryheader"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</h1>\n<div class="productrow">`);
-        products.forEach((product) => {
-            if(product.tags.includes(category["identifier"])) {
-                arraytodo.push(`<div class="${surroundingelement}">
-                    <img src="${product["img"]}">
-                    <h4>${product["title"]}</h4>
-                    ` + getPriceAndSale(product["id"]) + `
-                    <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
-            }
-        });
-        arraytodo.push(`</div`);*/
+        if(results.length > 0) {
+            document.querySelector(".small-container-nosearch").innerHTML = `<h1 class="searchheader">Suchergebnisse für "${search}"</h1>`;
+            getCategoriesFromSearch(search, categoryelement);
+            getProductsFromSearch(search, productelement, productsurroundingelement);
+        } else {
+            document.querySelector(".small-container-nosearch").innerHTML = `<h1 class="searchheader">Keine Suchergebnisse gefunden!</h1>
+            \n<a href="index.html"><button class="viewmorebutton">Zur Startseite <i class="ri-arrow-right-double-fill"></i></button></a>`;
+        }
     }
+}
 
-    let final = arraytodo.join("\n");
-    document.querySelector("." + element).innerHTML = final;
+function getProductsFromSearch(search, element, surroundingelement) {
+    let arraytodo = [];
+    results = getResultsFor(search);
+    arraytodo.push(`<h1 class="productsheader">Produkte</h1>\n<div class="productrow">`);
+    results.forEach((result) => {
+        product = getProductByTitle(result);
+        if(product !== undefined) {
+            arraytodo.push(`<div class="${surroundingelement}">
+                <img src="${product["img"]}">
+                <h4>${product["title"]}</h4>
+                ` + getPriceAndSale(product["id"]) + `
+                <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
+        }
+    });
+    arraytodo.push(`</div>`);
+
+    if(arraytodo.length > 2) {
+        let final = arraytodo.join("\n");
+        document.querySelector("." + element).innerHTML = final;
+    }
+}
+
+function getCategoriesFromSearch(search, element) {
+    let arraytodo = [];
+    results = getResultsFor(search);
+    arraytodo.push(`<h1 class="categoryheader">Kategorien</h1><div class="categoryrow">`);
+    results.forEach((result) => {
+        category = getCategoryByTitle(result);
+        if(category !== undefined) {
+            arraytodo.push(`<div class="categorywrap">
+                <a href="category.html?category=${category["identifier"]}"><button class="categorybutton"><i class="${category["icon"]}" style="color:${category["color"]}"></i> ${category["title"]}</button></a>
+            </div>`);
+        }
+    });
+    arraytodo.push(`</div`);
+    console.log(arraytodo);
+
+    if(arraytodo.length > 2) {
+        let final = arraytodo.join("\n");
+        document.querySelector("." + element).innerHTML = final;
+    }
 }
 
 function getCategoryByTitle(title) {

@@ -29,8 +29,16 @@
 	<main>
 		<script src="js/manager.js"></script>
 		<!----------- Produkte --------->
-		<section class="searchsite"></section>
-		<script language="javascript">getProductsFromSearch('categorysite', 'products')</script>
+		<section class="searchsite">
+			<div class="small-container-nosearch"></div>
+			<div class="small-container">
+				<div class="categoriesearch"></div>
+			</div>
+			<div class="small-container">
+				<div class="productsearch"></div>
+			</div>
+			<script language="javascript">getSearchResults('productsearch', 'products', 'categoriesearch')</script>
+		</section>
 		
 		<div class="push"></div>
 	</main>

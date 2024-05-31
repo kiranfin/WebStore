@@ -133,7 +133,7 @@ main{
     justify-content: space-around;
 }
 
-.small-container{
+.small-container, .small-container-nosearch{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
@@ -235,6 +235,15 @@ main{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+}
+
+.searchheader {
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    line-height: 60px;
+    font-size: 35px;
+    padding-top: 15px;
 }
 
 .newrow{
@@ -370,13 +379,6 @@ footer, .push{
 .page-buttons{
     display: flex;
     margin: 0 auto 80px;
-}
-
-.small-container-product{
-    max-width: 1080px;
-    margin: auto;
-    padding-left: 25px;
-    padding-right: 25px;
 }
 
 .page-button, .start-page-btn, .prev-page-btn, .next-page-btn, .end-page-btn{
