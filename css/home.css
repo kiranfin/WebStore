@@ -24,6 +24,7 @@ main{
     --suggestion-bg-color: #ffffff;
     --text-color: #1D242B;
     --text-color-invert: #FAFAFA;
+    --button-numbercolor: #FAFAFA;
     --button-bg-color: #4c5053;
     --button-hover-color: #ffffff;
     --button-border-color: #d5d9d9;
@@ -36,6 +37,7 @@ main{
     --suggestion-bg-color: #000000;
     --text-color: #FAFAFA;
     --text-color-invert: #1D242B;
+    --button-numbercolor: #1D242B;
     --button-bg-color: #eeeeee;
     --button-hover-color: #4c5053;
     --button-border-color: #2a2626;
@@ -415,7 +417,8 @@ footer, .push{
 .page-button, .start-page-btn, .prev-page-btn, .next-page-btn, .end-page-btn{
     display: inline-block;
     border: 1px solid var(--button-border-color);
-    color: #1D242B;
+    color: var(--text-color);
+    background-color: var(--button-numbercolor);
     margin-left: 10px;
     height: 40px;
     width: 40px;
@@ -423,6 +426,11 @@ footer, .push{
     border-radius: .5rem;
     line-height: 40px;
     cursor: pointer;
+}
+
+.number-buttons li{
+    background-color: var(--button-numbercolor);
+    color: var(--text-color);
 }
 
 .page-button.active{
@@ -480,6 +488,7 @@ footer, .push{
 }
 
 .pruser{
+    padding-top: 15px;
     padding-bottom: 5px;
     font-size: 20px;
     color: var(--text-color);
@@ -494,4 +503,5 @@ footer, .push{
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-bottom: 20px;
 }

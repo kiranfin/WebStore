@@ -81,7 +81,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    <img src='data:image/png;base64,${product["img"]}'>
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -90,7 +90,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -101,7 +101,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    <img src='data:image/png;base64,${product["img"]}'>
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -110,7 +110,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -118,19 +118,19 @@ function getProducts(element, sorter, count, surroundingelement) {
         }
     } else if(sorter === "dateadded") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
+            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    <img src='data:image/png;base64,${product["img"]}'>
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
             });
         } else if(count !== -1 && count !== 0) {
-            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
+            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -141,7 +141,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    <img src='data:image/png;base64,${product["img"]}'>
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -150,7 +150,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -194,11 +194,11 @@ function getProductsArray(sorter, count) {
         }
     } else if(sorter === "dateadded") {
         if(count === -1) {
-            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
+            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             arraytodo = sortarray.map((x) => x);
         } else if(count !== -1 && count !== 0) {
             let i = 0;
-            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded));
+            let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             if(i < count) {
                 sortarray.forEach((product) => {
                     arraytodo.push(product);
@@ -249,7 +249,7 @@ function getRandomProducts(element, count, surroundingelement) {
     for(let i = 0; i < count; i++) {
         product = products[Math.floor(Math.random()*products.length)];
         arraytodo.push(`<div class="${surroundingelement}">
-            <img src="${product["img"]}">
+            <img src='data:image/png;base64,${product["img"]}'>
             <h4>${product["title"]}</h4>
             ` + getPriceAndSale() + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
             </div>`);
@@ -265,7 +265,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src="${product["img"]}" alt="img">
+                        <img src='data:image/png;base64,${product["img"]}' alt="img">
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -286,7 +286,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src="${product["img"]}" alt="img">
+                        <img src='data:image/png;base64,${product["img"]}' alt="img">
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -345,11 +345,11 @@ function setCurrentPage(page) {
 }
 
 function getProductsFromPage(element, sorter, count, surroundingelement, page) {
-    pr = getProducts(element, sorter, count, surroundingelement);
     prarray = getProductsArray(sorter, count);
-    prev = (page - 1) * maxElements; //0
-    all = page * maxElements; //20
-    prcount = prarray.length; //4
+    console.log(prarray);
+    prev = (page - 1) * maxElements; //1*20
+    all = page * maxElements; //40
+    prcount = prarray.length; //21
     let arraytodo = [];
     if(prcount < all) {
         if(page - 1 <= 0) {
@@ -363,7 +363,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
             let final = arraytodo.join("\n");
             document.querySelector("." + element).innerHTML = final;
         } else {
-            for(let i = (prev - 1); i < (prcount - 1); i++) {
+            for(let i = prev; i < prcount; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
@@ -385,7 +385,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
             let final = arraytodo.join("\n");
             document.querySelector("." + element).innerHTML = final;
         } else {
-            for(let i = (prev - 1); i < (all - 1); i++) {
+            for(let i = prev; i < all; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
                     <img src="${prarray[i]["img"]}">
                     <h4>${prarray[i]["title"]}</h4>
@@ -539,10 +539,40 @@ function getClaimedIds() {
 
 function getFreeId() {
     claimedids = getClaimedIds();
-    for(let i = 0; false; i++) {
-        if(!claimedids.includes(i)) break;
-        return i;
+    for(let i = 0; true; i++) {
+        if(!claimedids.includes(i)) {
+            return i;
+            break;
+        }
     }
+}
+
+function debugProducts() {
+    console.log(products);
+    titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
+            "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
+        prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
+        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
+            "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
+        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
+            "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
+            "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
+            "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Kupfer/Polyester, schwarz, outdoor", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
+            "20 Stunden Wiedergabe mit einer Aufladung, personalisiertes 3D-Audio"];
+        catetags = [["furniture"], ["furniture"], ["furniture"], ["furniture", "garden"], ["garden", "decoration"], ["garden", "furniture"], ["shoes"], ["shoes"], ["accessoires"], ["accessoires"], ["clothes"], ["clothes"], ["clothes"], 
+            ["cars"], ["cars"], ["decoration"], ["decoration"], ["technology"], ["technology", "decoration"], ["technology"]];
+        users = ["Anna", "Ben", "Clara", "Emma", "David", "Felix", "Greta", "Hugo", "Ivonne", "Jonas", "Katharina", "Leon", "Maria", "Noah", "Olivia", "Paul", "Sophie", "Tim", "Ulrike", "Vincent"];
+        dates = ["2021-01-22T17:53:36.000+02:00", "2023-01-01T22:51:35.000+02:00", "2020-06-26T15:54:01.000+02:00", "2020-09-01T22:19:07.000+02:00", "2023-09-28T01:57:58.000+02:00", "2023-03-07T15:27:39.000+02:00", 
+            "2020-04-11T15:19:14.000+02:00", "2023-11-14T01:32:57.000+02:00", "2023-08-03T11:02:30.000+02:00", "2022-07-25T06:56:47.000+02:00", "2021-11-03T09:38:30.000+02:00", "2022-08-22T22:12:41.000+02:00", 
+            "2021-05-10T09:39:11.000+02:00", "2022-12-01T12:10:35.000+02:00", "2021-07-07T10:53:24.000+02:00", "2021-01-31T10:58:51.000+02:00", "2022-10-09T22:51:40.000+02:00", "2023-01-01T01:22:33.000+02:00", 
+            "2020-03-29T16:01:00.000+02:00", "2023-04-22T14:42:11.000+02:00"];
+    console.log(titles.length);
+    console.log(prices.length);
+    console.log(imgs.length);
+    console.log(descriptions.length);
+    console.log(catetags.length);
+    console.log(users.length);
+    console.log(dates.length);
 }
 
 //addProduct("hamsti", 500, "./img/hamsti.jpg", "eins hamsti", ["cars"], "Andi");
@@ -552,14 +582,17 @@ function addProduct(title, price, img, description, tags, user) {
     sale = 0;
     now = new Date();
     date = toIsoString(now);
-    products.push({id: id, title: title, price: price, sale: sale, img: img, description: description, tags: tags, user: user, dateadded: date});
-    saveProductsToLocal(products);
+    copyproducts = products.map((x) => x);
+    copyproducts.push({id: id, title: title, price: price, sale: sale, img: img, description: description, tags: tags, user: user, dateadded: date});
+    saveProductsToLocal(copyproducts);
 }
 
 function removeProduct(product) {
-    index = products.indexOf(product);
+    copyproducts = products.map((x) => x);
+    index = copyproducts.indexOf(product);
     if(index > -1) {
-        products.splice(index, 1);
+        copyproducts.splice(index, 1);
+        saveProductsToLocal(copyproducts);
     }
 }
 
@@ -586,8 +619,9 @@ function getProductsFromLocal() {
         titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
             "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
         prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
-        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
+        imgssrc = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
             "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
+        imgs = convertImagesToBase64Strings(imgssrc);
         descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
             "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
             "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
@@ -599,7 +633,7 @@ function getProductsFromLocal() {
         dates = ["2021-01-22T17:53:36.000+02:00", "2023-01-01T22:51:35.000+02:00", "2020-06-26T15:54:01.000+02:00", "2020-09-01T22:19:07.000+02:00", "2023-09-28T01:57:58.000+02:00", "2023-03-07T15:27:39.000+02:00", 
             "2020-04-11T15:19:14.000+02:00", "2023-11-14T01:32:57.000+02:00", "2023-08-03T11:02:30.000+02:00", "2022-07-25T06:56:47.000+02:00", "2021-11-03T09:38:30.000+02:00", "2022-08-22T22:12:41.000+02:00", 
             "2021-05-10T09:39:11.000+02:00", "2022-12-01T12:10:35.000+02:00", "2021-07-07T10:53:24.000+02:00", "2021-01-31T10:58:51.000+02:00", "2022-10-09T22:51:40.000+02:00", "2023-01-01T01:22:33.000+02:00", 
-            "2020-03-29T16:01:00.000+02:00", "2023-04-22T14:42:11.000+02:00 "];
+            "2020-03-29T16:01:00.000+02:00", "2023-04-22T14:42:11.000+02:00"];
 
         let tosave = [];
         for(let i = 0; i < titles.length; i++) {
@@ -610,6 +644,39 @@ function getProductsFromLocal() {
     local = localStorage.getItem("products");
     todo = JSON.parse(local);
     return todo;
+}
+
+function convertImagesToBase64Strings(paths) {
+    let final = [];
+    for(let i = 0; i < paths.length; i++) {
+        imgdata = toDataURL(paths[i], function(dataURL) {
+            return dataURL;
+        });
+        console.log(imgdata);
+        final.push(imgdata);
+    }
+    
+    return final;
+}
+
+function toDataURL(src, callback, outputFormat) {
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function() {
+        var canvas = document.createElement('CANVAS');
+        var ctx = canvas.getContext('2d');
+        var dataURL;
+        canvas.height = this.naturalHeight;
+        canvas.width = this.naturalWidth;
+        ctx.drawImage(this, 0, 0);
+        dataURL = canvas.toDataURL(outputFormat);
+        callback(dataURL);
+    };
+    img.src = src;
+    if (img.complete || img.complete === undefined) {
+        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+        img.src = src;
+    }
 }
 
 function saveProductsToLocal(productarray) {
@@ -633,7 +700,7 @@ function getProductsFromCategory(element, surroundingelement) {
         products.forEach((product) => {
             if(product.tags.includes(category["identifier"])) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    <img src='data:image/png;base64,${product["img"]}'>
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `
                     <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -768,7 +835,7 @@ function getProductsFromSearch(search, element, surroundingelement) {
         product = getProductByTitle(result);
         if(product !== undefined) {
             arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                <img src="${product["img"]}">
+                <img src='data:image/png;base64,${product["img"]}'>
                 <h4>${product["title"]}</h4>
                 ` + getPriceAndSale(product["id"]) + `
                 <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -829,7 +896,7 @@ function getProductSite(element) {
             final = `
             <div class="prrow">
                 <div class="imgs">
-                    <img src=${product["img"]}></img>    
+                    <img src='data:image/png;base64,${product["img"]}'></img>
                 </div>
                 <div class="prinfos">
                     <h1 class="prheader">${product["title"]}</h1>
@@ -839,6 +906,7 @@ function getProductSite(element) {
             </div>
             <div class="productrowbutton">
                 <div>
+                    ` + getTagsFromProduct(product["id"]) + `
                     <p class="pruser">Von: ${product["user"]}</p>
                     <p class="prdate">Veröffentlicht: ${viewdate}</p>
                 </div>
@@ -894,4 +962,15 @@ function getThemeButton() {
 function updateThemeButtonAndOtherStuff(element) {
     button = getThemeButton();
     document.querySelector("." + element).innerHTML = `<a href="upload.html"><i class="ri-upload-line"></i></a>` + button + `<a href="#"><i class="ri-shopping-bag-3-line"></i></a>`;
+}
+
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.height = img.naturalHeight;
+    canvas.width = img.naturalWidth;
+    var ctx = canvas.getContext('2d');
+
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    var base64String = canvas.toDataURL()
+    return base64String;
 }
