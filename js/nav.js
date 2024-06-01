@@ -20,8 +20,8 @@ const createNav = () => {
 				</div>
 				<div class="nav-right">
 					<a href="upload.html"><i class="ri-upload-line"></i></a>
-					<a href="#"><i class="ri-settings-2-line"></i></a>
-					<a href="#"><i class="ri-user-line"></i></a>
+					` + getThemeButton() + `
+					<a href="#"><i class="ri-shopping-bag-3-line"></i></a>
 				</div>
 			</div>
 		</div>
@@ -29,3 +29,11 @@ const createNav = () => {
 }
 
 createNav();
+
+function getThemeButton() {
+	if(localStorage.getItem("theme") === "dark-mode") {
+		return `<a onclick="toggleTheme()"><i class="ri-sun-line"></i></a>`;
+	} else if(localStorage.getItem("theme") === "light-mode") {
+		return `<a onclick="toggleTheme()"><i class="ri-moon-line"></i></a>`;
+	}
+}

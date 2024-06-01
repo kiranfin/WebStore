@@ -839,13 +839,13 @@ function getProductSite(element) {
                 <div class="prinfos">
                     <h1 class="prheader">${product["title"]}</h1>
                     <div class="prprice">` + getPriceAndSale(parseInt(id, 10)) + `</div>
-                    <p class="prdescription">${product["description"]}</p>
+                    <p class="prdescription">Beschreibung:<br>${product["description"]}</br></p>
                 </div>
             </div>
             <div class="productrowbutton">
                 <div>
-                    <p class="pruser">${product["user"]}</p>
-                    <p class="prdate">${viewdate}</p>
+                    <p class="pruser">Von: ${product["user"]}</p>
+                    <p class="prdate">Veröffentlicht: ${viewdate}</p>
                 </div>
                 <a href="products.html?sorter=sale"><button class="viewmorebutton">Zum Warenkorb hinzufügen <i class="ri-arrow-right-double-fill"></i></button></a>
             </div>
@@ -860,4 +860,43 @@ function getProductSite(element) {
         error = `<h1 class="searchheader">Error: Kein Produkt mit der Id</h1>`;
         document.querySelector("." + element).innerHTML = error;
     }
+}
+
+function initTheme() {
+    local = localStorage.getItem("theme");
+    if(local === null || local === undefined) {
+        localStorage.setItem("theme", "light-mode");
+        document.body.classList.add('light-mode');
+    } else {
+        document.body.classList.add(local);
+    }
+}
+
+initTheme();
+
+function toggleTheme() {
+    if(document.body.classList.contains('light-mode')) {
+        document.body.classList.remove('light-mode');
+        document.body.classList.add('dark-mode');
+        localStorage.setItem("theme", "dark-mode");
+        updateThemeButtonAndOtherStuff("nav-right");
+    } else if(document.body.classList.contains('dark-mode')) {
+        document.body.classList.remove('dark-mode');
+        document.body.classList.add('light-mode');
+        localStorage.setItem("theme", "light-mode");
+        updateThemeButtonAndOtherStuff("nav-right");
+    }
+}
+
+function getThemeButton() {
+    if(localStorage.getItem("theme") === "dark-mode") {
+        return `<a onclick="toggleTheme()"><i class="ri-sun-line"></i></a>`;
+    } else if(localStorage.getItem("theme") === "light-mode") {
+        return `<a onclick="toggleTheme()"><i class="ri-moon-line"></i></a>`;
+    }
+}
+
+function updateThemeButtonAndOtherStuff(element) {
+    button = getThemeButton();
+    document.querySelector("." + element).innerHTML = `<a href="upload.html"><i class="ri-upload-line"></i></a>` + button + `<a href="#"><i class="ri-shopping-bag-3-line"></i></a>`;
 }

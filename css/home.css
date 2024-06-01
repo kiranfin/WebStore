@@ -10,20 +10,36 @@
 main{
     min-height: 100vh;
     margin-bottom: -240px;
+    background-image: var(--body-bg);
 }
 
 .cardheader{
     font-size: 35px;
+    color: var(--text-color);
 }
 
-:root{
-    --bg-color: #1D242B;
-    --bg-color2: #4c5053;
+.light-mode{
+    --body-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --product-border-color: #000000;
+    --suggestion-bg-color: #ffffff;
+    --text-color: #1D242B;
+    --text-color-invert: #FAFAFA;
+    --button-bg-color: #4c5053;
+    --button-hover-color: #ffffff;
+    --button-border-color: #d5d9d9;
+    --footer-bg-color: linear-gradient(to right bottom, #c3cfe2, #c3d1e7, #c3d3ed, #c3d4f2, #c3d6f8, #c4d5fb, #c5d3fd, #c7d1ff, #cecbff, #dbc3ff, #ebb9ff, #fdaefd);
+}
+
+.dark-mode{
+    --body-bg: linear-gradient(to top, #0d1117, #0a0e14, #070b11, #04080d, #010409);
+    --product-border-color: #ffffff;
+    --suggestion-bg-color: #000000;
     --text-color: #FAFAFA;
     --text-color-invert: #1D242B;
-    --hover-color: #0077C0;
-    --p-font: 25px;
-    --border-color: #d5d9d9;
+    --button-bg-color: #eeeeee;
+    --button-hover-color: #4c5053;
+    --button-border-color: #2a2626;
+    --footer-bg-color: linear-gradient(to right bottom, #010409, #04070e, #070a12, #0b0d15, #0f0f18, #100f1d, #120f22, #140e26, #130b2e, #110836, #0e043e, #090046);
 }
 
 /*Deine Vorschläge*/
@@ -50,13 +66,13 @@ main{
 .product{
     width: 600px;
     border-radius: 1.25rem;
-    border: 3px #000000 solid;
+    border: 3px var(--product-border-color) solid;
     overflow: hidden;
 }
 
 .img{
     text-align: center;
-    background-color: #ffffff;
+    background-color: var(--suggestion-bg-color);
     max-width: 100%;
     max-height: 240px;
     min-height: 240px;
@@ -64,6 +80,7 @@ main{
 
 .box{
     justify-content: flex-start;
+    background-color: var(--suggestion-bg-color);
     text-align: center;
     margin-bottom: 0;
 }
@@ -74,13 +91,14 @@ main{
 }
 
 .info{
-    background-color: var(--text-color);
+    background-color: var(--suggestion-bg-color);
     border-radius: 1rem;
     margin: 0 auto;
     text-align: center;
     position: relative;
     padding-bottom: 60px;
     height: 120px;
+    color: var(--text-color);
 }
 
 .swiper {
@@ -90,22 +108,22 @@ main{
 
 .cardbutton{
     display: inline-block;
-    background-color: var(--bg-color2);
+    background-color: var(--button-bg-color);
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 6px;
     padding-bottom: 6px;
     border-radius: .5rem;
-    color: var(--text-color);
+    color: var(--text-color-invert);
     font-weight: 500;
     font-size: 14px;
     max-height: 50px;
 }
 
 .cardbutton:hover{
-    color: var(--text-color-invert);
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-color);
 }
 
 .cardprice{
@@ -144,24 +162,25 @@ main{
     padding-left: 0;
     padding-right: 10px;
     display: flex;
+    color: var(--text-color);
     justify-content: space-between;
 }
 
 .viewmorebutton{
     display: inline-block;
-    background-color: var(--bg-color2);
+    background-color: var(--button-bg-color);
     padding: .75rem;
     border-radius: .5rem;
-    color: var(--text-color);
+    color: var(--text-color-invert);
     font-weight: 500;
     font-size: 14px;
     max-height: 50px;
 }
 
 .viewmorebutton:hover{
-    color: var(--text-color-invert);
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-color);
 }
 
 /*Discounts*/
@@ -171,6 +190,7 @@ main{
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.25s;
+    color: var(--text-color);
 }
 
 .discountheader{
@@ -179,6 +199,7 @@ main{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+    color: var(--text-color);
 }
 
 .discountrow{
@@ -190,6 +211,7 @@ main{
 
 .discounts img{
     max-width: 100%;
+    border-radius: 0.5em;
 }
 
 .discounts:hover{
@@ -203,6 +225,7 @@ main{
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.25s;
+    color: var(--text-color);
 }
 
 .newheader{
@@ -211,10 +234,12 @@ main{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+    color: var(--text-color);
 }
 
 .new img{
     max-width: 100%;
+    border-radius: 0.5em;
 }
 
 .new:hover{
@@ -235,6 +260,7 @@ main{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+    color: var(--text-color);
 }
 
 .searchheader {
@@ -244,6 +270,7 @@ main{
     line-height: 60px;
     font-size: 35px;
     padding-top: 15px;
+    color: var(--text-color);
 }
 
 .newrow{
@@ -259,10 +286,10 @@ main{
 
 .categorybutton{
     display: inline-block;
-    background-color: var(--bg-color2);
+    background-color: var(--button-bg-color);
     padding: .75rem;
     border-radius: .5rem;
-    color: var(--text-color);
+    color: var(--text-color-invert);
     font-weight: 600;
     font-size: 20px;
     max-height: 100px;
@@ -270,9 +297,9 @@ main{
 }
 
 .categorybutton:hover{
-    color: var(--text-color-invert);
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-color);
 }
 
 .categorysite{
@@ -289,7 +316,7 @@ footer, .push{
 
 /*Footer*/
 .footer{
-    background: var(--bg-color);
+    background-image: var(--footer-bg-color);
     color: var(--text-color);
     font-size: 18px;
     padding: 60px 0 60px;
@@ -298,6 +325,7 @@ footer, .push{
 
 .footerheader{
     font-size: 24px;
+    color: var(--text-color);
 }
 
 
@@ -319,13 +347,13 @@ footer, .push{
 
 .product-category{
     display: inline-block;
-    background-color: var(--bg-color2);
+    background-color: var(--button-bg-color);
     padding-left: 5px;
     padding-right: 5px;
     padding-top: 3px;
     padding-bottom: 3px;
     border-radius: .5rem;
-    color: var(--text-color);
+    color: var(--text-color-invert);
     font-weight: 500;
     font-size: 14px;
     max-height: 25px;
@@ -334,12 +362,12 @@ footer, .push{
 
 .sorter, .maxview{
     margin: 10px;
-    color: var(--text-color);
-    background: var(--bg-color2);
+    color: var(--text-color-invert);
+    background: var(--button-bg-color);
     font-size: 16px;
     border-radius: 0.5em;
     cursor: pointer;
-    border: 2px var(--bg-color2) solid;
+    border: 2px var(--button-bg-color) solid;
     padding-top: 3px;
     padding-bottom: 3px;
     padding-left: 5px;
@@ -347,8 +375,8 @@ footer, .push{
 }
 
 .sorter:hover, .maxview:hover{
-    color: var(--text-color);
-    background: var(--bg-color2);
+    color: var(--text-color-invert);
+    background: var(--button-bg-color);
 }
 
 .products {
@@ -357,6 +385,7 @@ footer, .push{
     min-width: 200px;
     margin-bottom: 50px;
     transition: transform 0.25s;
+    color: var(--text-color);
 }
 
 .productsheader{
@@ -365,10 +394,12 @@ footer, .push{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+    color: var(--text-color);
 }
 
 .products img{
     max-width: 100%;
+    border-radius: 0.5em;
 }
 
 .products:hover{
@@ -383,8 +414,8 @@ footer, .push{
 
 .page-button, .start-page-btn, .prev-page-btn, .next-page-btn, .end-page-btn{
     display: inline-block;
-    border: 1px solid var(--border-color);
-    color: var(--text-color-invert);
+    border: 1px solid var(--button-border-color);
+    color: #1D242B;
     margin-left: 10px;
     height: 40px;
     width: 40px;
@@ -396,8 +427,8 @@ footer, .push{
 
 .page-button.active{
     display: inline-block;
-    background-color: var(--bg-color2);
-    color: var(--text-color);
+    background-color: var(--button-bg-color);
+    color: var(--text-color-invert);
     border: 1px solid transparent;
     margin-left: 10px;
     height: 40px;
