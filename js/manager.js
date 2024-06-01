@@ -135,7 +135,6 @@ function getProducts(element, sorter, count, surroundingelement) {
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
             }
-            console.log(arraytodo);
         }
     } else if(sorter === "default" || sorter === null) {
         if(count === -1) {
@@ -796,7 +795,6 @@ function getCategoriesFromSearch(search, element) {
         }
     });
     arraytodo.push(`</div`);
-    console.log(arraytodo);
 
     if(arraytodo.length > 2) {
         let final = arraytodo.join("\n");
@@ -823,13 +821,10 @@ function getProductSite(element) {
     const urlparams = new URLSearchParams(url);
     if(urlparams.has('id')) {
         id = urlparams.get('id');
-        console.log(id);
-        console.log(localStorage.getItem("products"));
         product = getProductFromId(parseInt(id, 10));
 
         if(product !== null && product !== undefined) {
             date = new Date(product["dateadded"]);
-            console.log(date);
             viewdate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + date.getHours() + ":" + (date.getMinutes() < 10 ? '0' : '') + date.getMinutes();
             final = `
             <div class="prrow">
