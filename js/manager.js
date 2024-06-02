@@ -2,6 +2,7 @@ let currentPage = 1;
 let maxElements = 20;
 let maxVisiblePages = 5;
 let maxSale = 80;
+let currentImageString = '';
 
 let currentSorter = '';
 
@@ -81,7 +82,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src='data:image/png;base64,${product["img"]}'>
+                    <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -90,7 +91,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
+                    <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -101,7 +102,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src='data:image/png;base64,${product["img"]}'>
+                    <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -110,7 +111,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
+                    <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -121,7 +122,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src='data:image/png;base64,${product["img"]}'>
+                    <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -130,7 +131,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
+                    <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -141,7 +142,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src='data:image/png;base64,${product["img"]}'>
+                    <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -150,7 +151,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src='data:image/png;base64,${sortarray[i]["img"]}'>
+                    <img src="${sortarray[i]["img"]}">
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -249,7 +250,7 @@ function getRandomProducts(element, count, surroundingelement) {
     for(let i = 0; i < count; i++) {
         product = products[Math.floor(Math.random()*products.length)];
         arraytodo.push(`<div class="${surroundingelement}">
-            <img src='data:image/png;base64,${product["img"]}'>
+            <img src="${product["img"]}">
             <h4>${product["title"]}</h4>
             ` + getPriceAndSale() + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
             </div>`);
@@ -265,7 +266,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src='data:image/png;base64,${product["img"]}' alt="img">
+                        <img src="${product["img"]}" alt="img">
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -286,7 +287,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src='data:image/png;base64,${product["img"]}' alt="img">
+                        <img src="${product["img"]}" alt="img">
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -619,9 +620,8 @@ function getProductsFromLocal() {
         titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
             "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
         prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
-        imgssrc = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
+        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
             "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
-        imgs = convertImagesToBase64Strings(imgssrc);
         descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
             "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
             "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
@@ -649,34 +649,13 @@ function getProductsFromLocal() {
 function convertImagesToBase64Strings(paths) {
     let final = [];
     for(let i = 0; i < paths.length; i++) {
-        imgdata = toDataURL(paths[i], function(dataURL) {
-            return dataURL;
-        });
-        console.log(imgdata);
+        let img = document.createElement('img');
+        img.src = path;
+        imgdata = getBase64Image(img);
         final.push(imgdata);
     }
     
     return final;
-}
-
-function toDataURL(src, callback, outputFormat) {
-    var img = new Image();
-    img.crossOrigin = 'Anonymous';
-    img.onload = function() {
-        var canvas = document.createElement('CANVAS');
-        var ctx = canvas.getContext('2d');
-        var dataURL;
-        canvas.height = this.naturalHeight;
-        canvas.width = this.naturalWidth;
-        ctx.drawImage(this, 0, 0);
-        dataURL = canvas.toDataURL(outputFormat);
-        callback(dataURL);
-    };
-    img.src = src;
-    if (img.complete || img.complete === undefined) {
-        img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-        img.src = src;
-    }
 }
 
 function saveProductsToLocal(productarray) {
@@ -700,7 +679,7 @@ function getProductsFromCategory(element, surroundingelement) {
         products.forEach((product) => {
             if(product.tags.includes(category["identifier"])) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src='data:image/png;base64,${product["img"]}'>
+                    <img src="${product["img"]}">
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `
                     <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -767,6 +746,9 @@ window.onclick = (event) => {
     if(event.target.matches(".search-box") && event.target.value.length > 0){
         resultbox.style.display = 'block';
     }
+    if (!event.target.matches(".category-result-box") && !event.target.matches(".resultli")) {
+        document.querySelector(".category-result-box").style.display = 'none';
+    }
 }
 
 searchbox.onkeyup = function() {    
@@ -809,6 +791,26 @@ function getResultsFor(search) {
     return result;
 }
 
+function getAvailableCategorySearches() {
+    let final = [];
+    categories.forEach((category) => {
+        document.querySelector(".category-result-box").style.display = 'block';
+        final.push(category["title"]);
+    });
+    return final;
+}
+
+function getCategoriesFor(search) {
+    result = [];
+    if(search.length > 0) {
+        available = getAvailableCategorySearches();
+        result = available.filter((keyword) => {
+            return keyword.toLowerCase().includes(search.toLowerCase());
+        });
+    }
+    return result;
+}
+
 function getSearchResults(productelement, productsurroundingelement, categoryelement) {
     url = window.location.search;
     const urlparams = new URLSearchParams(url);
@@ -835,7 +837,7 @@ function getProductsFromSearch(search, element, surroundingelement) {
         product = getProductByTitle(result);
         if(product !== undefined) {
             arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                <img src='data:image/png;base64,${product["img"]}'>
+                <img src="${product["img"]}">
                 <h4>${product["title"]}</h4>
                 ` + getPriceAndSale(product["id"]) + `
                 <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -896,7 +898,7 @@ function getProductSite(element) {
             final = `
             <div class="prrow">
                 <div class="imgs">
-                    <img src='data:image/png;base64,${product["img"]}'></img>
+                    <img src=${product["img"]}></img>    
                 </div>
                 <div class="prinfos">
                     <h1 class="prheader">${product["title"]}</h1>
@@ -966,11 +968,117 @@ function updateThemeButtonAndOtherStuff(element) {
 
 function getBase64Image(img) {
     var canvas = document.createElement("canvas");
-    canvas.height = img.naturalHeight;
-    canvas.width = img.naturalWidth;
-    var ctx = canvas.getContext('2d');
+    canvas.width = img.width;
+    canvas.height = img.height;
 
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    var base64String = canvas.toDataURL()
-    return base64String;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+
+    var dataURL = canvas.toDataURL("image/png");
+
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+function onUploadClick() {
+    titlebox = document.querySelector(".title-box");
+    descriptionbox = document.querySelector(".description-box");
+    pricebox = document.querySelector(".price-box");
+    userbox = document.querySelector(".user-box");
+    if(titlebox.value.length > 0 && descriptionbox.value.length > 0 && pricebox.value.length > 0 && userbox.value.length > 0) {
+        title = titlebox.value;
+        description = descriptionbox.value;
+        price = pricebox.value;
+        user = userbox.value;
+        if(title.length <= 50 && price > 0 && price <= 100000 && description.length <= 300 && user.length <= 40 && currentImageString.length > 0) {
+
+        } else {
+            if(title.length > 50) {
+                titlebox.style.border = '1px solid red';
+                titlebox.value = '';
+                titlebox.placeholder = 'Titel überschreitet maximale Breite!';
+            }
+            if(price < 0 || price > 100000) {
+                pricebox.style.border = '1px solid red';
+                pricebox.value = '';
+                pricebox.placeholder = 'Min: 0.01 - Max: 100000';
+            }
+            if(description.length > 300) {
+                descriptionbox.style.border = '1px solid red';
+                descriptionbox.value = '';
+                descriptionbox.placeholder = 'Maximal 300 Buchstaben!';
+            }
+            if(user.length > 40) {
+                userbox.style.border = '1px solid red';
+                userbox.value = '';
+                userbox.placeholder = 'Maximal 40 Buchstaben!';
+            }
+        }
+    } else {
+        if(titlebox.value.length === 0) {
+            titlebox.style.border = '1px solid red';
+        }
+        if(descriptionbox.value.length === 0) {
+            descriptionbox.style.border = '1px solid red';
+        }
+        if(pricebox.value.length === 0) {
+            pricebox.style.border = '1px solid red';
+        }
+        if(userbox.value.length === 0) {
+            userbox.style.border = '1px solid red';
+        }
+    }
+}
+
+function initFileInput() {
+    fileinput = document.getElementById("fileinput");
+    fileinput.addEventListener("change", e => {
+        const file = fileinput.files[0];
+
+        //preview
+
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            currentImageString = reader.result;
+        });
+        reader.readAsDataURL(file);
+    });
+}
+
+function initCategoryBox() {
+    categorybox = document.querySelector(".category-box");
+    categorybox.onkeyup = function() {    
+        let result = [];
+        let input = categorybox.value;
+        result = getCategoriesFor(input);
+        if(result.length !== 0) {
+            displayCategoryInBox("category-result-box", result);
+        }
+    }
+}
+
+function addCategoryToSelected(categorysearch) {
+    category = getCategoryByTitle(categorysearch);
+    categoryupload = document.querySelector(".categoryupload");
+    html = categoryupload.innerHTML;
+    if(!html.includes(`<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')">${category["title"]}</button>`)) {
+        newhtml = html.concat("\n", `<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')">${category["title"]}</button>`);
+        categoryupload.innerHTML = newhtml;
+    }
+}
+
+function removeCategoryFromSelected(categorysearch) {
+    categoryupload = document.querySelector(".categoryupload");
+    html = categoryupload.innerHTML;
+    newhtml = html.replace(`<button class="product-category" onclick="removeCategoryFromSelected('${categorysearch}')">${categorysearch}</button>`, "");
+    console.log(newhtml);
+    categoryupload.innerHTML = newhtml;
+}
+
+function displayCategoryInBox(element, result) {
+    const content = result.map((list) => {
+        return `<li class='resultli' onclick="addCategoryToSelected('${list}')">${list}</li>`;
+    });
+
+    document.querySelector("." + element).innerHTML = "<ul>" + content.join('') + "</ul>";
 }

@@ -29,6 +29,53 @@
 
 	<main>
 		<script src="js/manager.js"></script>
+
+		<section class="uploadsite">
+			<h1 class="categoryheader">Produkt hochladen</h1>
+			<div class="uploadrow">
+				<div class="product-detail-inputs">
+					<div class="upload-inputs">
+						<p>Titel:</p>
+						<input type="text" class="title-box" placeholder="Titel eingeben" autocomplete="off"></input>
+					</div>
+					<div class="upload-inputs">
+						<p>Beschreibung:</p>
+						<textarea class="description-box" rows="14" cols="10" wrap="soft" placeholder="Dieses Produkt ist super cool, weil..." maxlength="300" style="overflow:hidden"></textarea>
+					</div>
+					<div class="upload-inputs">
+						<p>Preis (€):</p>
+						<input type="number" min="0.01" max="100000" class="price-box" placeholder="Preis eingeben" autocomplete="off"></input>
+					</div>
+					<div class="upload-inputs">
+						<div class="uploadrow">
+							<p>Kategorien:</p>
+							<div class="categoryupload"></div>
+						</div>
+						<input type="text" class="category-box" placeholder="Kategorie suchen" autocomplete="off"></input>
+						<div class="category-result-box"></div>
+						<script language="javascript">initCategoryBox()</script>
+					</div>
+					<div class="upload-inputs">
+						<p>Verkäufer:</p>
+						<input type="text" class="user-box" placeholder="Namen eingeben" autocomplete="off"></input>
+					</div>
+					<button class="uploadbutton" onclick="onUploadClick()"><i class="ri-upload-line"></i> Hochladen</button>
+				</div>
+				<div class="uploadimage">
+					<div class="uploadrow2">
+						<p>Bild hochladen:</p>
+						<label for="fileinput" class="custom-file-upload">
+					        Bild wählen
+					    </label>
+						<input id="fileinput" type="file"/>
+						<script language="javascript">initFileInput()</script>
+					</div>
+					<p>Vorschau:</p>
+				</div>
+			</div>
+			
+		</section>
+
 		<div class="push"></div>
 	</main>
 

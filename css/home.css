@@ -332,7 +332,7 @@ footer, .push{
 
 
 /*Products*/
-.productssite{
+.productssite, .uploadsite{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
@@ -460,7 +460,7 @@ footer, .push{
     overflow: hidden;
 }
 
-.prrow{
+.prrow, .uploadrow{
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -504,4 +504,129 @@ footer, .push{
     flex-wrap: wrap;
     justify-content: space-between;
     margin-bottom: 20px;
+}
+
+.upload-inputs{
+    padding: 10px;
+}
+
+.title-box, .price-box, .user-box, .category-box{
+    width: 60%;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid var(--nav-text-color);
+    border-radius: 10px;
+    background: none;
+    color: var(--nav-text-color);
+    outline: none;
+    text-align: justify;
+}
+
+.description-box{
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    border: 1px solid var(--nav-text-color);
+    border-radius: 10px;
+    padding-bottom: 100px;
+    background: none;
+    color: var(--nav-text-color);
+    outline: none;
+}
+
+.upload-inputs {
+    color: var(--text-color);
+}
+
+.product-detail-inputs{
+    min-width: 500px;
+}
+
+.uploadimage{
+    margin-left: 80px;
+    color: var(--text-color);
+    min-width: 400px;
+}
+
+.uploadimage p{
+    padding-top: 15px;
+}
+
+.uploadrow p{
+    font-size: 22px;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    background-color: var(--button-bg-color);
+    padding: .75rem;
+    border-radius: .5rem;
+    color: var(--text-color-invert);
+    font-weight: 500;
+    font-size: 14px;
+    max-height: 50px;
+    margin-left: 50px;
+}
+
+.custom-file-upload:hover{
+    color: var(--text-color);
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-color);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.uploadrow2{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.uploadrow2 p{
+    padding-top: 5px;
+}
+
+.uploadbutton{
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    background-color: var(--button-bg-color);
+    padding: .75rem;
+    border-radius: .5rem;
+    color: var(--text-color-invert);
+    font-weight: 500;
+    font-size: 14px;
+    max-height: 50px;
+}
+
+.uploadbutton:hover{
+    color: var(--text-color);
+    background-color: var(--button-hover-color);
+    border: 1px solid var(--button-border-color);
+}
+
+.category-result-box{
+    border: 1px solid transparent;
+    width: 80%;
+    border-radius: 0.5rem;
+}
+
+.category-result-box li{
+    list-style-type: none;
+    border-radius: 3px;
+    padding: 5px;
+    color: var(--nav-text-color);
+    cursor: pointer;
+    background: var(--search-button-color);
+}
+
+.category-result-box li:hover{
+    background: var(--hover-color);
+}
+
+.categoryupload{
+    padding-left: 5px;
+    padding-top: 5px;
 }
