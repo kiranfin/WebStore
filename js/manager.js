@@ -270,6 +270,7 @@ function getSuggestions(count) {
                         ` + getImageFromProduct(product) + `
                     </div>
                     <div class="info">
+                        ` + getImageSourceSuggestions() + `
                         <h2>${product["title"]}</h2>
                         <div class="cardrow">
                             ` + getPriceAndSaleSuggestions(product["id"]) + `
@@ -288,9 +289,11 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
+                        
                         ` + getImageFromProduct(product) + `
                     </div>
                     <div class="info">
+                        ` + getImageSourceSuggestions() + `
                         <h2>${product["title"]}</h2>
                         <div class="cardrow">
                             ` + getPriceAndSaleSuggestions(product["id"]) + `
@@ -306,6 +309,15 @@ function getSuggestions(count) {
     }
     let final = arraytodo.join("\n");
     document.querySelector(".swiper-wrapper").innerHTML = final;
+}
+
+function getImageSourceSuggestions() {
+    storage = product["img"];
+    if(storage.startsWith("./img/")) {
+        return `<a class="imagesource" href="https://unsplash.com">Quelle: unsplash.com</a>`
+    } else {
+        return '';
+    }
 }
 
 function getPriceAndSale(id) {
@@ -619,14 +631,14 @@ function toIsoString(date) {
 function getProductsFromLocal() {
     local = localStorage.getItem("products");
     if(local === null) {
-        titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
-            "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
+        titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Gartengarnitur", "Sandalen", "Sportsneaker", "Handtasche", "Halskette", "T-Shirt", "Blaue Jeans", "Hoodie", "Fiat", 
+            "Opel", "Duftkerzen", "Lichterkette", "Smartphone", "Game Boy", "Kopfhörer"];
         prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
-        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
-            "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
-        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
-            "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
-            "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
+        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/garnitur.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
+            "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/smartphone.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
+        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Holz", 
+            "Material: Polyresin", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Damen-Sandalen, Material: Leder, Größe: 39", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
+            "Damen-Lederhandtasche, Material: Lederimitat", "Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
             "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Kupfer/Polyester, schwarz, outdoor", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
             "20 Stunden Wiedergabe mit einer Aufladung, personalisiertes 3D-Audio"];
         catetags = [["furniture"], ["furniture"], ["furniture"], ["furniture", "garden"], ["garden", "decoration"], ["garden", "furniture"], ["shoes"], ["shoes"], ["accessoires"], ["accessoires"], ["clothes"], ["clothes"], ["clothes"], 
@@ -1098,7 +1110,7 @@ function displayCategoryInBox(element, result) {
 function getImageFromProduct(product) {
     storage = product["img"];
     if(storage.startsWith("./img/")) {
-        return `<img src="${storage}">`
+        return `<img src="${storage}"><a class="imagesource" href="https://unsplash.com">Quelle: unsplash.com</a>`
     } else if(storage.startsWith("data:image/jpeg;base64") || storage.startsWith("data:image/png;base64") || storage.startsWith("data:image/webp;base64") || storage.startsWith("data:image/gif;base64")) {
         return `<img src="${storage}">`
     }
@@ -1147,7 +1159,7 @@ function getShoppingCart(element) {
     if(shoppingcart !== null && shoppingcart.length > 0) {
         shoppingcart.forEach((product) => {
             arraytodo.push(`<div class="shoppingrow" onclick="onProductClick(${product["id"]})">
-                ` + getImageFromProduct(product) + `
+                <div style="display:block">` + getImageFromProduct(product) + `</div>
                 <div class="shoppingcartinfo"><h4>${product["title"]}</h4>
                 ` + getPriceAndSale(product["id"]) + 
                 `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>

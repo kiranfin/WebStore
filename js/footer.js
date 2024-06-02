@@ -9,6 +9,7 @@ const createFooter = () => {
 				<p>Klasse: G12</p>
 				<p>Zweck: Informatikprojekt</p>
 				<p>Ausgestellte Produkte stehen NICHT zum Verkauf, dienen nur zu Schauzwecken!</p>
+				<p>Quelle der Bilder: <a href="https://unsplash.com">unsplash.com</a> <a href="https://unsplash.com/de/lizenz">(lizenzfrei)</a></p>
 			</div>
 			<div class="footer-socials">
 				<h4 class="footerheader">Soziale Netzwerke</h4>

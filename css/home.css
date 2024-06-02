@@ -29,6 +29,7 @@ main{
     --button-hover-color: #ffffff;
     --button-border-color: #d5d9d9;
     --footer-bg-color: linear-gradient(to right bottom, #c3cfe2, #c3d1e7, #c3d3ed, #c3d4f2, #c3d6f8, #c4d5fb, #c5d3fd, #c7d1ff, #cecbff, #dbc3ff, #ebb9ff, #fdaefd);
+    --source-color: blue;
 }
 
 .dark-mode{
@@ -42,6 +43,7 @@ main{
     --button-hover-color: #4c5053;
     --button-border-color: #2a2626;
     --footer-bg-color: linear-gradient(to right bottom, #010409, #04070e, #070a12, #0b0d15, #0f0f18, #100f1d, #120f22, #140e26, #130b2e, #110836, #0e043e, #090046);
+    --source-color: skyblue;
 }
 
 /*Deine Vorschläge*/
@@ -672,7 +674,9 @@ input[type="file"] {
 .shoppingrow{
     max-width: 1080px;
     max-height: 200px;
-    margin: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 25px;
     display: flex;
     justify-content: flex-start;
     flex-wrap: wrap;
@@ -691,4 +695,10 @@ input[type="file"] {
 
 .shoppingcartinfo{
     padding-left: 20px;
+}
+
+.imagesource{
+    font-size: 12px;
+    display: block;
+    color: var(--source-color);
 }
