@@ -301,7 +301,7 @@ function getSuggestions(count) {
                     </div>
                 </div>
             </div>`);
-            newproducts.splice(products.indexOf(product), 1);
+            newproducts.splice(newproducts.indexOf(product), 1);
         }
     }
     let final = arraytodo.join("\n");
@@ -311,14 +311,38 @@ function getSuggestions(count) {
 function getPriceAndSale(id) {
     todoproduct = getProductFromId(id);
     if(todoproduct !== null) {
-        price = todoproduct.price;
-        sale = todoproduct.sale
-        salepricestraight = price - ((sale * 0.01) * price);
-        saleprice = salepricestraight.toFixed(2);
+        oldprice = todoproduct.price.toFixed(2); //4500.99
+        price = convertPrice(oldprice);
+        sale = todoproduct.sale;
+        salepricestraight = oldprice - ((sale * 0.01) * oldprice);
+        osaleprice = salepricestraight.toFixed(2);
+        saleprice = convertPrice(osaleprice);
         if(sale !== 0) {
-            return `<p style="text-decoration:line-through">${price}€</p><p style="color:red"> ${saleprice}€ (${sale}%)</p>`;
+            return `<p style="text-decoration:line-through">${price} €</p><p style="color:red"> ${saleprice} € (${sale}%)</p>`;
         } else {
-            return `<p>${price}€</p>`;
+            return `<p>${price} €</p>`;
+        }
+    }
+}
+
+function convertPrice(price) {
+    //500.99
+    if(price.charAt(price.length - 3) === ".") {
+        nondeci = price.slice(0, -3); //500
+        if(nondeci.length > 3) {
+            sliceprice = nondeci.slice(0, -3); //4
+            return sliceprice + "." + nondeci.replace(sliceprice, "") + "," + price.replace(price.slice(0, -2), "");
+        } else {
+            toreplace = nondeci + price.replace(nondeci, "");
+            return toreplace.replace(".", ",");
+        }
+    } else {
+        if(price.length > 3) {
+            sliceprice = nondeci.slice(0, -3); //4
+            return sliceprice + "." + price.replace(sliceprice, "");
+        } else {
+            toreplace = price;
+            return toreplace.replace(".", ",");
         }
     }
 }
@@ -326,14 +350,16 @@ function getPriceAndSale(id) {
 function getPriceAndSaleSuggestions(id) {
     todoproduct = getProductFromId(id);
     if(todoproduct !== null) {
-        price = todoproduct.price;
-        sale = todoproduct.sale
-        salepricestraight = price - ((sale * 0.01) * price);
-        saleprice = salepricestraight.toFixed(2);
+        oldprice = todoproduct.price.toFixed(2);
+        price = convertPrice(oldprice);
+        sale = todoproduct.sale;
+        salepricestraight = oldprice - ((sale * 0.01) * oldprice);
+        oldsaleprice = salepricestraight.toFixed(2);
+        saleprice = convertPrice(oldsaleprice);
         if(sale !== 0) {
-            return `<div class="cardsale"><p style="text-decoration:line-through">${price}€</p><p style="color:red"> ${saleprice}€ (${sale}%)</p></div>`;
+            return `<div class="cardsale"><p style="text-decoration:line-through">${price} €</p><p style="color:red"> ${saleprice} € (${sale}%)</p></div>`;
         } else {
-            return `<p>${price}€</p>`;
+            return `<p>${price} €</p>`;
         }
     }
 }
@@ -348,7 +374,6 @@ function setCurrentPage(page) {
 
 function getProductsFromPage(element, sorter, count, surroundingelement, page) {
     prarray = getProductsArray(sorter, count);
-    console.log(prarray);
     prev = (page - 1) * maxElements; //1*20
     all = page * maxElements; //40
     prcount = prarray.length; //21
@@ -579,8 +604,7 @@ function debugProducts() {
 
 //addProduct("hamsti", 500, "./img/hamsti.jpg", "eins hamsti", ["cars"], "Andi");
 
-function addProduct(title, price, img, description, tags, user) {
-    id = getFreeId();
+function addProduct(title, price, img, description, tags, user, id = getFreeId()) {
     sale = 0;
     now = new Date();
     date = toIsoString(now);
@@ -644,19 +668,8 @@ function getProductsFromLocal() {
     }
     local = localStorage.getItem("products");
     todo = JSON.parse(local);
+    console.log(todo);
     return todo;
-}
-
-function convertImagesToBase64Strings(paths) {
-    let final = [];
-    for(let i = 0; i < paths.length; i++) {
-        let img = document.createElement('img');
-        img.src = path;
-        imgdata = getBase64Image(img);
-        final.push(imgdata);
-    }
-    
-    return final;
 }
 
 function saveProductsToLocal(productarray) {
@@ -748,8 +761,10 @@ window.onclick = (event) => {
         resultbox.style.display = 'block';
     }
     if (!event.target.matches(".category-result-box") && !event.target.matches(".resultli")) {
-        document.querySelector(".category-result-box").style.display = 'none';
-        document.querySelector(".category-result-box").style.border = '1px solid transparent';
+        if(document.querySelector(".category-result-box") !== null) {
+            document.querySelector(".category-result-box").style.display = 'none';
+            document.querySelector(".category-result-box").style.border = '1px solid transparent';
+        }
     }
 }
 
@@ -969,19 +984,6 @@ function updateThemeButtonAndOtherStuff(element) {
     document.querySelector("." + element).innerHTML = `<a href="upload.html"><i class="ri-upload-line"></i></a>` + button + `<a href="#"><i class="ri-shopping-bag-3-line"></i></a>`;
 }
 
-function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-
-    var ctx = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-
-    var dataURL = canvas.toDataURL("image/png");
-
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-}
-
 function onUploadClick() {
     titlebox = document.querySelector(".title-box");
     descriptionbox = document.querySelector(".description-box");
@@ -990,7 +992,8 @@ function onUploadClick() {
     userbox = document.querySelector(".user-box");
     inputbutton = document.getElementById("fileinput");
     labelinput = document.querySelector(".custom-file-upload");
-    if(titlebox.value.length > 0 && descriptionbox.value.length > 0 && pricebox.value.length > 0 && userbox.value.length > 0 && categorybox.value.length > 0) {
+    if(titlebox.value.length > 0 && descriptionbox.value.length > 0 && pricebox.value.length > 0 && userbox.value.length > 0) {
+        id = getFreeId();
         title = titlebox.value;
         description = descriptionbox.value;
         price = pricebox.value;
@@ -998,7 +1001,8 @@ function onUploadClick() {
         tags = currentuploadcategories.map((x) => x);
         img = currentImageString;
         if(title.length <= 50 && price > 0 && price <= 100000 && description.length <= 300 && user.length <= 40 && img.length > 0 && currentuploadcategories.length > 0) {
-            addProduct(title, price, img, description, tags, user);
+            addProduct(title, price, img, description, tags, user, id);
+            window.location.href="product.html?id=" + id;
         } else {
             if(title.length > 50) {
                 titlebox.style.border = '1px solid red';
@@ -1045,19 +1049,25 @@ function onUploadClick() {
 
 function initFileInput() {
     fileinput = document.getElementById("fileinput");
+    labelinput = document.querySelector(".custom-file-upload");
     fileinput.addEventListener("change", e => {
         const file = fileinput.files[0];
-
-        //preview
-
         const reader = new FileReader();
 
         reader.addEventListener("load", () => {
-            console.log(reader.result);
             currentImageString = reader.result;
+            updatePreview();
         });
         reader.readAsDataURL(file);
     });
+}
+
+function updatePreview() {
+    previewheader = document.querySelector(".previewheader");
+    previewheader.style.display = 'block';
+    preview = document.querySelector(".preview");
+    preview.src = currentImageString;
+    preview.style.display = 'block';
 }
 
 function initCategoryBox() {
@@ -1104,7 +1114,7 @@ function getImageFromProduct(product) {
     storage = product["img"];
     if(storage.startsWith("./img/")) {
         return `<img src="${storage}">`
-    } else if(storage.startsWith("data:image/jpeg;base64")) {
+    } else if(storage.startsWith("data:image/jpeg;base64") || storage.startsWith("data:image/png;base64") || storage.startsWith("data:image/webp;base64") || storage.startsWith("data:image/gif;base64")) {
         return `<img src="${storage}">`
     }
 }
