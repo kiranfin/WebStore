@@ -3,6 +3,7 @@ let maxElements = 20;
 let maxVisiblePages = 5;
 let maxSale = 80;
 let currentImageString = '';
+let currentuploadcategories = [];
 
 let currentSorter = '';
 
@@ -82,7 +83,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    ` + getImageFromProduct(product) + `
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -91,7 +92,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => (a.price - ((a.sale * 0.01) * a.price).toFixed(2)) - (b.price - ((b.sale * 0.01) * b.price).toFixed(2)));
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    ` + getImageFromProduct(sortarray[i]) + `
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -102,7 +103,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    ` + getImageFromProduct(product) + `
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -111,7 +112,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => a.sale - b.sale).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    ` + getImageFromProduct(sortarray[i]) + `
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -122,7 +123,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    ` + getImageFromProduct(product) + `
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -131,7 +132,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.toSorted((a, b) => new Date(a.dateadded) - new Date(b.dateadded)).reverse();
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    ` + getImageFromProduct(sortarray[i]) + `
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -142,7 +143,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             sortarray.forEach((product) => {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    ` + getImageFromProduct(product) + `
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
                     </div>`);
@@ -151,7 +152,7 @@ function getProducts(element, sorter, count, surroundingelement) {
             let sortarray = products.map((x) => x);
             for(let i = 0; i < count; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${sortarray[i]["id"]})">
-                    <img src="${sortarray[i]["img"]}">
+                    ` + getImageFromProduct(sortarray[i]) + `
                     <h4>${sortarray[i]["title"]}</h4>
                     ` + getPriceAndSale(sortarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(sortarray[i]["id"]) + `</div>
                     </div>`);
@@ -250,7 +251,7 @@ function getRandomProducts(element, count, surroundingelement) {
     for(let i = 0; i < count; i++) {
         product = products[Math.floor(Math.random()*products.length)];
         arraytodo.push(`<div class="${surroundingelement}">
-            <img src="${product["img"]}">
+            ` + getImageFromProduct(product) + `
             <h4>${product["title"]}</h4>
             ` + getPriceAndSale() + `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div>
             </div>`);
@@ -266,7 +267,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src="${product["img"]}" alt="img">
+                        ` + getImageFromProduct(product) + `
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -287,7 +288,7 @@ function getSuggestions(count) {
             arraytodo.push(`<div class="product swiper-slide">
                 <div class="box">
                     <div class="img">
-                        <img src="${product["img"]}" alt="img">
+                        ` + getImageFromProduct(product) + `
                     </div>
                     <div class="info">
                         <h2>${product["title"]}</h2>
@@ -356,7 +357,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
         if(page - 1 <= 0) {
             for(let i = 0; i < prcount; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
-                    <img src="${prarray[i]["img"]}">
+                    ` + getImageFromProduct(prarray[i]) + `
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
@@ -366,7 +367,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
         } else {
             for(let i = prev; i < prcount; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
-                    <img src="${prarray[i]["img"]}">
+                    ` + getImageFromProduct(prarray[i]) + `
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
@@ -378,7 +379,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
         if(page - 1 <= 0) {
             for(let i = 0; i < all; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
-                    <img src="${prarray[i]["img"]}">
+                    ` + getImageFromProduct(prarray[i]) + `
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
@@ -388,7 +389,7 @@ function getProductsFromPage(element, sorter, count, surroundingelement, page) {
         } else {
             for(let i = prev; i < all; i++) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${prarray[i]["id"]})">
-                    <img src="${prarray[i]["img"]}">
+                    ` + getImageFromProduct(prarray[i]) + `
                     <h4>${prarray[i]["title"]}</h4>
                     ` + getPriceAndSale(prarray[i]["id"]) + `<div class="productrow">` + getTagsFromProduct(prarray[i]["id"]) + `</div>
                     </div>`);
@@ -679,7 +680,7 @@ function getProductsFromCategory(element, surroundingelement) {
         products.forEach((product) => {
             if(product.tags.includes(category["identifier"])) {
                 arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                    <img src="${product["img"]}">
+                    ` + getImageFromProduct(product) + `
                     <h4>${product["title"]}</h4>
                     ` + getPriceAndSale(product["id"]) + `
                     <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -748,6 +749,7 @@ window.onclick = (event) => {
     }
     if (!event.target.matches(".category-result-box") && !event.target.matches(".resultli")) {
         document.querySelector(".category-result-box").style.display = 'none';
+        document.querySelector(".category-result-box").style.border = '1px solid transparent';
     }
 }
 
@@ -795,6 +797,7 @@ function getAvailableCategorySearches() {
     let final = [];
     categories.forEach((category) => {
         document.querySelector(".category-result-box").style.display = 'block';
+        document.querySelector(".category-result-box").style.border = '1px solid #000000';
         final.push(category["title"]);
     });
     return final;
@@ -837,7 +840,7 @@ function getProductsFromSearch(search, element, surroundingelement) {
         product = getProductByTitle(result);
         if(product !== undefined) {
             arraytodo.push(`<div class="${surroundingelement}" onclick="onProductClick(${product["id"]})">
-                <img src="${product["img"]}">
+                ` + getImageFromProduct(product) + `
                 <h4>${product["title"]}</h4>
                 ` + getPriceAndSale(product["id"]) + `
                 <div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>`);
@@ -898,7 +901,7 @@ function getProductSite(element) {
             final = `
             <div class="prrow">
                 <div class="imgs">
-                    <img src=${product["img"]}></img>    
+                    ` + getImageFromProduct(product) + `
                 </div>
                 <div class="prinfos">
                     <h1 class="prheader">${product["title"]}</h1>
@@ -983,14 +986,19 @@ function onUploadClick() {
     titlebox = document.querySelector(".title-box");
     descriptionbox = document.querySelector(".description-box");
     pricebox = document.querySelector(".price-box");
+    categorybox = document.querySelector(".category-box");
     userbox = document.querySelector(".user-box");
-    if(titlebox.value.length > 0 && descriptionbox.value.length > 0 && pricebox.value.length > 0 && userbox.value.length > 0) {
+    inputbutton = document.getElementById("fileinput");
+    labelinput = document.querySelector(".custom-file-upload");
+    if(titlebox.value.length > 0 && descriptionbox.value.length > 0 && pricebox.value.length > 0 && userbox.value.length > 0 && categorybox.value.length > 0) {
         title = titlebox.value;
         description = descriptionbox.value;
         price = pricebox.value;
         user = userbox.value;
-        if(title.length <= 50 && price > 0 && price <= 100000 && description.length <= 300 && user.length <= 40 && currentImageString.length > 0) {
-
+        tags = currentuploadcategories.map((x) => x);
+        img = currentImageString;
+        if(title.length <= 50 && price > 0 && price <= 100000 && description.length <= 300 && user.length <= 40 && img.length > 0 && currentuploadcategories.length > 0) {
+            addProduct(title, price, img, description, tags, user);
         } else {
             if(title.length > 50) {
                 titlebox.style.border = '1px solid red';
@@ -1012,6 +1020,9 @@ function onUploadClick() {
                 userbox.value = '';
                 userbox.placeholder = 'Maximal 40 Buchstaben!';
             }
+            if(img.length == 0) {
+                labelinput.style.border = '1px solid red';
+            }
         }
     } else {
         if(titlebox.value.length === 0) {
@@ -1022,6 +1033,9 @@ function onUploadClick() {
         }
         if(pricebox.value.length === 0) {
             pricebox.style.border = '1px solid red';
+        }
+        if(categorybox.value.length === 0) {
+            categorybox.style.border = '1px solid red';
         }
         if(userbox.value.length === 0) {
             userbox.style.border = '1px solid red';
@@ -1039,6 +1053,7 @@ function initFileInput() {
         const reader = new FileReader();
 
         reader.addEventListener("load", () => {
+            console.log(reader.result);
             currentImageString = reader.result;
         });
         reader.readAsDataURL(file);
@@ -1061,17 +1076,19 @@ function addCategoryToSelected(categorysearch) {
     category = getCategoryByTitle(categorysearch);
     categoryupload = document.querySelector(".categoryupload");
     html = categoryupload.innerHTML;
-    if(!html.includes(`<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')">${category["title"]}</button>`)) {
-        newhtml = html.concat("\n", `<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')">${category["title"]}</button>`);
+    if(!html.includes(`<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')"><i class="ri-close-line"></i> ${category["title"]}</button>`)) {
+        newhtml = html.concat("\n", `<button class="product-category" onclick="removeCategoryFromSelected('${category["title"]}')"><i class="ri-close-line"></i> ${category["title"]}</button>`);
+        currentuploadcategories.push(category["identifier"]);
         categoryupload.innerHTML = newhtml;
     }
 }
 
 function removeCategoryFromSelected(categorysearch) {
+    category = getCategoryByTitle(categorysearch);
     categoryupload = document.querySelector(".categoryupload");
     html = categoryupload.innerHTML;
-    newhtml = html.replace(`<button class="product-category" onclick="removeCategoryFromSelected('${categorysearch}')">${categorysearch}</button>`, "");
-    console.log(newhtml);
+    newhtml = html.replace(`<button class="product-category" onclick="removeCategoryFromSelected('${categorysearch}')"><i class="ri-close-line"></i> ${categorysearch}</button>`, "");
+    currentuploadcategories.splice(currentuploadcategories.indexOf(category["identifier"]), 1);
     categoryupload.innerHTML = newhtml;
 }
 
@@ -1081,4 +1098,13 @@ function displayCategoryInBox(element, result) {
     });
 
     document.querySelector("." + element).innerHTML = "<ul>" + content.join('') + "</ul>";
+}
+
+function getImageFromProduct(product) {
+    storage = product["img"];
+    if(storage.startsWith("./img/")) {
+        return `<img src="${storage}">`
+    } else if(storage.startsWith("data:image/jpeg;base64")) {
+        return `<img src="${storage}">`
+    }
 }
