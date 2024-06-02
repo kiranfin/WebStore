@@ -4,7 +4,7 @@ let maxVisiblePages = 5;
 let maxSale = 80;
 let currentImageString = '';
 let currentuploadcategories = [];
-
+let shoppingcart = getShoppingCartFromLocal();
 let currentSorter = '';
 
 const availablesorts = ["default", "dateadded", "price", "sale"];
@@ -576,30 +576,7 @@ function getFreeId() {
 
 function debugProducts() {
     console.log(products);
-    titles = ["Komode", "Wohnzimmertisch", "Sofa", "Gartenschaukel", "Gartenzwerg", "Hochbeet", "Sandalen", "Sportsneaker", "Schwarze Handtasche", "Goldene Kette", "Rotes T-Shirt", "Blaue Jeans", "Schwarzer Hoodie", "Fiat 500", 
-            "Opel Astra", "Duftkerzen", "Lichterkette", "Samsung S24 Ultra", "Game Boy", "Apple AirPods Max"];
-        prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
-        imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/hochbeet.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
-            "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/s24.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
-        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Stahl + Kissen", 
-            "Material: Polyresin, mit Laterne", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Herren Outdoor-Sandalen, Material: Leder, Größe: 42", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
-            "Schwarze Damen-Handtasche, Material: Lederimitat", "Goldene Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
-            "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Kupfer/Polyester, schwarz, outdoor", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
-            "20 Stunden Wiedergabe mit einer Aufladung, personalisiertes 3D-Audio"];
-        catetags = [["furniture"], ["furniture"], ["furniture"], ["furniture", "garden"], ["garden", "decoration"], ["garden", "furniture"], ["shoes"], ["shoes"], ["accessoires"], ["accessoires"], ["clothes"], ["clothes"], ["clothes"], 
-            ["cars"], ["cars"], ["decoration"], ["decoration"], ["technology"], ["technology", "decoration"], ["technology"]];
-        users = ["Anna", "Ben", "Clara", "Emma", "David", "Felix", "Greta", "Hugo", "Ivonne", "Jonas", "Katharina", "Leon", "Maria", "Noah", "Olivia", "Paul", "Sophie", "Tim", "Ulrike", "Vincent"];
-        dates = ["2021-01-22T17:53:36.000+02:00", "2023-01-01T22:51:35.000+02:00", "2020-06-26T15:54:01.000+02:00", "2020-09-01T22:19:07.000+02:00", "2023-09-28T01:57:58.000+02:00", "2023-03-07T15:27:39.000+02:00", 
-            "2020-04-11T15:19:14.000+02:00", "2023-11-14T01:32:57.000+02:00", "2023-08-03T11:02:30.000+02:00", "2022-07-25T06:56:47.000+02:00", "2021-11-03T09:38:30.000+02:00", "2022-08-22T22:12:41.000+02:00", 
-            "2021-05-10T09:39:11.000+02:00", "2022-12-01T12:10:35.000+02:00", "2021-07-07T10:53:24.000+02:00", "2021-01-31T10:58:51.000+02:00", "2022-10-09T22:51:40.000+02:00", "2023-01-01T01:22:33.000+02:00", 
-            "2020-03-29T16:01:00.000+02:00", "2023-04-22T14:42:11.000+02:00"];
-    console.log(titles.length);
-    console.log(prices.length);
-    console.log(imgs.length);
-    console.log(descriptions.length);
-    console.log(catetags.length);
-    console.log(users.length);
-    console.log(dates.length);
+    console.log(shoppingcart);
 }
 
 //addProduct("hamsti", 500, "./img/hamsti.jpg", "eins hamsti", ["cars"], "Andi");
@@ -609,7 +586,7 @@ function addProduct(title, price, img, description, tags, user, id = getFreeId()
     now = new Date();
     date = toIsoString(now);
     copyproducts = products.map((x) => x);
-    copyproducts.push({id: id, title: title, price: price, sale: sale, img: img, description: description, tags: tags, user: user, dateadded: date});
+    copyproducts.push({id: id, title: title, price: parseFloat(price), sale: sale, img: img, description: description, tags: tags, user: user, dateadded: date});
     saveProductsToLocal(copyproducts);
 }
 
@@ -668,7 +645,6 @@ function getProductsFromLocal() {
     }
     local = localStorage.getItem("products");
     todo = JSON.parse(local);
-    console.log(todo);
     return todo;
 }
 
@@ -930,7 +906,7 @@ function getProductSite(element) {
                     <p class="pruser">Von: ${product["user"]}</p>
                     <p class="prdate">Veröffentlicht: ${viewdate}</p>
                 </div>
-                <a href="products.html?sorter=sale"><button class="viewmorebutton">Zum Warenkorb hinzufügen <i class="ri-arrow-right-double-fill"></i></button></a>
+                ` + getShoppingCartButton(product["id"]) + `
             </div>
             `;
 
@@ -942,6 +918,15 @@ function getProductSite(element) {
     } else {
         error = `<h1 class="searchheader">Error: Kein Produkt mit der Id</h1>`;
         document.querySelector("." + element).innerHTML = error;
+    }
+}
+
+function getShoppingCartButton(id) {
+    product = getProductFromId(id);
+    if(shoppingcart !== null && shoppingcart.some(e => e.id === product["id"])) {
+        return `<button class="viewmorebutton" onclick="removeFromShoppingCart(${product["id"]})">Aus dem Warenkorb entfernen <i class="ri-arrow-right-double-fill"></i></button>`;
+    } else {
+        return `<button class="viewmorebutton" onclick="addToShoppingCart(${product["id"]})">Zum Warenkorb hinzufügen <i class="ri-arrow-right-double-fill"></i></button>`;
     }
 }
 
@@ -1118,3 +1103,60 @@ function getImageFromProduct(product) {
         return `<img src="${storage}">`
     }
 }
+
+function getShoppingCartFromLocal() {
+    local = localStorage.getItem("shoppingcart");
+    if(local === null) {
+        local = null;
+    }
+    todo = JSON.parse(local);
+    return todo;
+}
+
+function addToShoppingCart(id) {
+    product = getProductFromId(id);
+    if(shoppingcart !== null) {
+        copyshopping = shoppingcart.map((x) => x);
+    } else {
+        copyshopping = [];
+    }
+    copyshopping.push(product);
+    saveShoppingCartToLocal(copyshopping);
+    window.location.href="shoppingcart.html";
+}
+
+function removeFromShoppingCart(id) {
+    product = getProductFromId(id);
+    copyshopping = shoppingcart.map((x) => x);
+    const indexfun = (element) => element.id === product["id"];
+    index = copyshopping.findIndex(indexfun);
+    if(index > -1) {
+        copyshopping.splice(index, 1);
+        saveShoppingCartToLocal(copyshopping);
+    }
+    window.location.href="shoppingcart.html";
+}
+
+function saveShoppingCartToLocal(shoppingcartarray) {
+    serialized = JSON.stringify(shoppingcartarray);
+    localStorage.setItem("shoppingcart", serialized);
+}
+
+function getShoppingCart(element) {
+    let arraytodo = [];
+    if(shoppingcart !== null && shoppingcart.length > 0) {
+        shoppingcart.forEach((product) => {
+            arraytodo.push(`<div class="shoppingrow" onclick="onProductClick(${product["id"]})">
+                ` + getImageFromProduct(product) + `
+                <div class="shoppingcartinfo"><h4>${product["title"]}</h4>
+                ` + getPriceAndSale(product["id"]) + 
+                `<div class="productrow">` + getTagsFromProduct(product["id"]) + `</div></div>
+                </div>`);
+        });
+    } else {
+        arraytodo.push(`<p class="shoppingcartheader">Keine Produkte im Warenkorb!</p>`);
+    }
+    let final = arraytodo.join("\n");
+    document.querySelector("." + element).innerHTML = final;
+}
+

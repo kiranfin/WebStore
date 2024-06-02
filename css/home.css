@@ -260,7 +260,7 @@ main{
     flex-wrap: wrap;
 }
 
-.categoryheader, .categoryheadericon{
+.categoryheader, .categoryheadericon, .shoppingheader{
     text-align: left;
     padding-left: 10px;
     position: relative;
@@ -275,6 +275,16 @@ main{
     position: relative;
     line-height: 60px;
     font-size: 35px;
+    padding-top: 15px;
+    color: var(--text-color);
+}
+
+.shoppingcartheader{
+    text-align: left;
+    padding-left: 10px;
+    position: relative;
+    line-height: 60px;
+    font-size: 25px;
     padding-top: 15px;
     color: var(--text-color);
 }
@@ -308,7 +318,7 @@ main{
     border: 1px solid var(--button-border-color);
 }
 
-.categorysite{
+.categorysite, .shoppingcartsite{
     max-width: 1080px;
     margin: auto;
     padding-left: 25px;
@@ -459,7 +469,6 @@ footer, .push{
 
 .imgs img{
     max-width: 500px;
-    height: 100%;
     width: 100%;
     max-height: 500px;
     overflow: hidden;
@@ -658,4 +667,28 @@ input[type="file"] {
     width: 100%;
     max-height: 500px;
     overflow: hidden;
+}
+
+.shoppingrow{
+    max-width: 1080px;
+    max-height: 200px;
+    margin: 10px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    transition: trans;
+    transition: transform 0.25s;
+    color: var(--text-color);
+}
+
+.shoppingrow:hover{
+    transform: translateX(5px);
+}
+
+.shoppingrow img{
+    max-height: 200px;
+}
+
+.shoppingcartinfo{
+    padding-left: 20px;
 }

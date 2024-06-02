@@ -21,7 +21,7 @@ const createNav = () => {
 				<div class="nav-right">
 					<a href="upload.html"><i class="ri-upload-line"></i></a>
 					` + getThemeButton() + `
-					<a href="#"><i class="ri-shopping-bag-3-line"></i></a>
+					<a href="shoppingcart.html"><i class="ri-shopping-bag-3-line"></i></a>
 				</div>
 			</div>
 		</div>
