@@ -916,7 +916,7 @@ function getProductSite(element) {
                 <div>
                     ` + getTagsFromProduct(product["id"]) + `
                     <p class="pruser">Von: ${product["user"]}</p>
-                    <p class="prdate">Veröffentlicht: ${viewdate}</p>
+                    <p class="prdate">Veröffentlicht: ${viewdate} Uhr</p>
                 </div>
                 ` + getShoppingCartButton(product["id"]) + `
             </div>
