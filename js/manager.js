@@ -591,8 +591,6 @@ function debugProducts() {
     console.log(shoppingcart);
 }
 
-//addProduct("hamsti", 500, "./img/hamsti.jpg", "eins hamsti", ["cars"], "Andi");
-
 function addProduct(title, price, img, description, tags, user, id = getFreeId()) {
     sale = 0;
     now = new Date();
@@ -744,6 +742,7 @@ resultbox.style.display = 'none';
 window.onclick = (event) => {
     if (!event.target.matches(".result-box") && !event.target.matches(".resultli")) {
         resultbox.style.display = 'none';
+        resultbox.style.border = '1px solid transparent';
     }
     if(event.target.matches(".search-box") && event.target.value.length > 0){
         resultbox.style.display = 'block';
@@ -766,6 +765,7 @@ searchbox.onkeyup = function() {
 }
 
 function displayResultInBox(result) {
+    document.querySelector(".result-box").style.border = '1px solid #000000';
     const content = result.map((list) => {
         return `<a href='search.html?search=${list}'><li class='resultli'>${list}</li></a>`;
     });
@@ -819,6 +819,8 @@ function getCategoriesFor(search) {
 
 function getSearchResults(productelement, productsurroundingelement, categoryelement) {
     url = window.location.search;
+    resultbox = document.querySelector(".result-box");
+    resultbox.style.border = '1px solid transparent';
     const urlparams = new URLSearchParams(url);
     if(urlparams.has('search')) {
         search = urlparams.get('search');
