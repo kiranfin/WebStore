@@ -636,10 +636,10 @@ function getProductsFromLocal() {
         prices = [469.99, 199.99, 629.99, 549.95, 59, 199, 77, 159.95, 49.99, 13.90, 5.14, 165, 29.90, 36990, 41990, 3.49, 34.99, 1075.95, 150.81, 579];
         imgs = ["./img/komode.jpg", "./img/wohnzimmertisch.jpg", "./img/sofa.jpg", "./img/gartenschaukel.jpg", "./img/gartenzwerg.jpg", "./img/garnitur.jpg", "./img/sandalen.jpg", "./img/sportsneaker.jpg", "./img/handtasche.jpg", 
             "./img/kette.jpg", "./img/shirt.jpg", "./img/jeans.jpg", "./img/hoodie.jpg", "./img/fiat.jpg", "./img/opel.jpg", "./img/duftkerzen.jpg", "./img/lichterkette.jpg", "./img/smartphone.jpg", "./img/gameboy.jpg", "./img/kopfhörer.jpg"];
-        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch mit zwei Ablagflächen", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Holz", 
+        descriptions = ["Eichenkomode perfekt für das Schlafzimmer!", "Massives Eichenholz, geölt, Tisch für vor die Couch!", "Füße: Massives Buchenholz, Bezug: dunkelgrauer Webstoff", "Maße: ca.200 x 114,5 x 168 cm, Holz", 
             "Material: Polyresin", "Maße: 200 x 100 x 72 cm, Material: Douglasie", "Damen-Sandalen, Material: Leder, Größe: 39", "Freizeit-Sneaker für Herren, Größe: 43, Spaziergänge, Freizeit, jedes Wetter", 
-            "Damen-Lederhandtasche, Material: Lederimitat", "Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, indigioblau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
-            "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Kupfer/Polyester, schwarz, outdoor", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
+            "Damen-Lederhandtasche, Material: Lederimitat", "Halskette, Masse: 7,5g", "Material: Baumwolle, Größe: S", "Damen-Jeans, blau, Größe: 30", "Material: Sweatstoff, Kapuze, schwarz, Größe: M", 
+            "37,3kWh, 235km Reichweite, 159 Wh/km Verbrauch", "Elektrisch, 115kW Leistung, 15,4kWh/100km", "Duft: Vanille, aromatisch", "Sterne, Kupfer/Polyester, Tannenbaum", "256GB, 6,8 Zoll, schwarz", "grau, portable Konsole", 
             "20 Stunden Wiedergabe mit einer Aufladung, personalisiertes 3D-Audio"];
         catetags = [["furniture"], ["furniture"], ["furniture"], ["furniture", "garden"], ["garden", "decoration"], ["garden", "furniture"], ["shoes"], ["shoes"], ["accessoires"], ["accessoires"], ["clothes"], ["clothes"], ["clothes"], 
             ["cars"], ["cars"], ["decoration"], ["decoration"], ["technology"], ["technology", "decoration"], ["technology"]];
